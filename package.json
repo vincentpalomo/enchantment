@@ -9,7 +9,9 @@
     "start": "node dist/index.js",
     "preserve": "npm run build",
     "serve": "concurrently \"tsc -w\" \"nodemon dist/index.js\" ",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "@jest/globals": "^29.5.0",
     "@types/express": "^4.17.17",
     "@types/http-errors": "^2.0.1",
+    "@types/jest": "^29.5.0",
     "@types/node": "^18.15.10",
     "@types/supertest": "^2.0.12",
     "nodemon": "^2.0.22"
