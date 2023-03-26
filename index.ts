@@ -1,10 +1,9 @@
 import { config } from 'dotenv'
 import express, {Request, Response, NextFunction, Application, ErrorRequestHandler} from 'express'
 import cors from 'cors'
-import { Server } from 'http'
 import createHttpError from 'http-errors'
 
-const router = require('./api')
+// const router = require('./api')
 
 // dotenv
 config()
@@ -37,13 +36,7 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 app.use(errorHandler)
 
 // api router
-app.use('/api', router)
-
-const PORT: number = Number(process.env.PORT || 3000)
-
-const server: Server = app.listen(PORT, () => {
-  console.log(`🧧 Server is running on http://localhost:${PORT}`)
-})
+// app.use('/api', router)
 
 
-module.exports = app
+module.exports = app 
