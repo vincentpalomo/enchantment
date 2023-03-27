@@ -60,6 +60,22 @@ const createInitialCards = async () => {
 const createInitialUsers = async () => {
   try {
     console.log(`Creating users... 🙏`)
+    const usersToCreate = [
+      {
+        username: 'jinx',
+        password: 'bestbb',
+        email: 'jinx@dachshund.com',
+        isAdmin: true,
+        avatar: 'No image available 😵'
+      },
+      {
+        username: 'voodoo',
+        password: 'smolboi',
+        email: 'voodoo@dachshund.com',
+        isAdmin: false,
+        avatar: 'No image available 😵'
+      }
+    ]
     console.log(`Finished creating users... ✔`)
   } catch (error) {
     console.error(`Error creating users... 😵`)
@@ -67,6 +83,7 @@ const createInitialUsers = async () => {
 }
 
 buildTables()
+.then(createInitialUsers)
 .then(createInitialCards)
 .catch(console.error)
 .finally(() => client.end())
