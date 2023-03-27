@@ -60,7 +60,7 @@ const deleteCard = async (cardID: number) => {
     DELETE FROM cards WHERE id = $1
     `, [cardID])
 
-    return card
+    return { message: `Card: ${cardID} has been removed 🗑`}
   } catch (error) {
     console.error(error)
   }
