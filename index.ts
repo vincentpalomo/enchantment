@@ -3,8 +3,6 @@ import express, {Request, Response, NextFunction, Application, ErrorRequestHandl
 import cors from 'cors'
 import createHttpError from 'http-errors'
 
-// const router = require('./api')
-
 // dotenv
 config()
 
@@ -36,7 +34,24 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 app.use(errorHandler)
 
 // api router
-// app.use('/api', router)
+app.use('/api', require('./api'))
+
+// DB connection
+const { client } = require('./db')
+
+// connect to server
+const PORT = process.env.PORT || 4000
+
+const handle = app.listen(PORT, async () => {
+  console.log(`⚡ Server running on ${PORT}`)
+
+  try {
+    await client.connect()
+    console.log(`Database is online! 🔥`)
+  } catch (error) {
+    console.error('Database is not online! 😵')
+  }
+})
 
 
-module.exports = app 
+module.exports = { app, handle} 
