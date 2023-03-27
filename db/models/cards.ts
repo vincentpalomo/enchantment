@@ -60,6 +60,13 @@ const deleteCard = async (cardID: number) => {
     DELETE FROM cards WHERE id = $1
     `, [cardID])
 
+    if (!card) {
+      throw {
+        name: "NoCardExistsError",
+        message: `Card with id: ${cardID} does not exist... 😵`
+      }
+    }
+
     return { message: `Card: ${cardID} has been removed 🗑`}
   } catch (error) {
     console.error(error)
