@@ -1,4 +1,5 @@
 module.exports = {
   client: require('../client'),
-  cards: require('./cards')
+  cards: require('./cards'),
+  users: require('./users')
 }

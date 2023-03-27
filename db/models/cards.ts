@@ -8,7 +8,7 @@ const getCards = async () => {
     SELECT id FROM cards
     `)
 
-    const cards = await Promise.all(card.map((c) => getCardById(c.id)))
+    const cards = await Promise.all(card.map((c: any) => getCardById(c.id)))
     return cards
 
   } catch (error) {
