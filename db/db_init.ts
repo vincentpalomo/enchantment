@@ -28,3 +28,7 @@ async function buildTables() {
     console.error(`Error building tables 😵`)
   }
 }
+
+buildTables()
+.catch(console.error)
+.finally(() => client.end())
