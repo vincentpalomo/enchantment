@@ -18,6 +18,10 @@ app.get('/health', (req: Request, res: Response, next: NextFunction) => {
   res.send('Server is healthy ❤')
 })
 
+// api router !! keep routes above error handlers !!
+const apiRouter = require('./api')
+app.use('/api', apiRouter)
+
 // error handler
 app.use((req: Request, res: Response, next: NextFunction) => {
   next(new createHttpError.NotFound())
@@ -33,9 +37,6 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 
 app.use(errorHandler)
 
-// api router
-app.use('/api', require('./api'))
-
 // DB connection
 const { client } = require('./db')
 
@@ -43,7 +44,7 @@ const { client } = require('./db')
 const PORT = process.env.PORT || 4000
 
 const handle = app.listen(PORT, async () => {
-  console.log(`⚡ Server running on ${PORT}`)
+  console.log(`⚡ Server running on http://localhost:${PORT}`)
 
   try {
     await client.connect()
