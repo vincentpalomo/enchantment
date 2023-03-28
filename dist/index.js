@@ -26,8 +26,8 @@ app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.use((0, morgan_1.default)('dev'));
 // server health route
-app.get('/health', (req, res, next) => {
-    res.send('Server is healthy ❤');
+app.get('/', (req, res, next) => {
+    res.send({ message: 'Server is healthy ❤' });
 });
 // api router !! keep routes above error handlers !!
 const apiRouter = require('./api');
@@ -49,7 +49,7 @@ const { client } = require('./db');
 // connect to server
 const PORT = process.env.PORT || 4000;
 const handle = app.listen(PORT, () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(`⚡ Server running on http://localhost:${PORT}`);
+    console.log(`⚡ Server running on http://localhost:${PORT}/`);
     try {
         yield client.connect();
         console.log(`Database is online! 🔥`);

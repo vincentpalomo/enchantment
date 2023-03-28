@@ -47,8 +47,8 @@ usersRouter.get('/id/:userID', (req, res, next) => __awaiter(void 0, void 0, voi
         next({ name, message });
     }
 }));
-// GET /api/users/username/:username
-usersRouter.get('/username/:username', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+// GET /api/users/:username
+usersRouter.get('/:username', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const username = req.params.username;
         const user = yield getUserByUsername(username);

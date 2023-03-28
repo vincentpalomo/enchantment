@@ -80,7 +80,7 @@ const deleteCard = (cardID) => __awaiter(void 0, void 0, void 0, function* () {
 const getCardById = (cardID) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { rows: [card] } = yield client.query(`
-    SELECT * FROM cards WHERE id = $1
+    SELECT id, name, description, img FROM cards WHERE id = $1
     `, [cardID]);
         if (!card) {
             throw {

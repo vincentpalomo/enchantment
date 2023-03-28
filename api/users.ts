@@ -60,8 +60,8 @@ usersRouter.get('/id/:userID', async (req: Request, res: Response, next: NextFun
   }
 })
 
-// GET /api/users/username/:username
-usersRouter.get('/username/:username', async (req: Request, res: Response, next: NextFunction) => {
+// GET /api/users/:username
+usersRouter.get('/:username', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const username = req.params.username
     const user = await getUserByUsername(username)

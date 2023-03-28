@@ -83,7 +83,7 @@ const deleteCard = async (cardID: number) => {
 const getCardById = async (cardID: number) => {
   try {
     const { rows: [card] } = await client.query(`
-    SELECT * FROM cards WHERE id = $1
+    SELECT id, name, description, img FROM cards WHERE id = $1
     `,[cardID]);
 
     if (!card) {
