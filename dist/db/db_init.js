@@ -33,7 +33,7 @@ function buildTables() {
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
       description TEXT NOT NULL,
-      img TEXT
+      image TEXT
     );
 
     CREATE TABLE users (
@@ -59,7 +59,7 @@ const createInitialCards = () => __awaiter(void 0, void 0, void 0, function* () 
             {
                 name: 'Hightower',
                 description: 'New set aquired',
-                img: 'No Image available 😵'
+                image: 'No Image available 😵'
             }
         ];
         yield Promise.all(cardsToCreate.map(createCard));

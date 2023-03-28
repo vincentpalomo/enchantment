@@ -80,7 +80,7 @@ usersRouter.post('/register', (req, res, next) => __awaiter(void 0, void 0, void
         if (checkUser) {
             next({
                 name: 'UserExistsError',
-                message: `A user by ${username} already exists`
+                message: `A user by ${username} already exists 🤔`
             });
         }
         const user = yield createUser({
@@ -122,7 +122,9 @@ usersRouter.patch('/edit/:userID', (req, res, next) => __awaiter(void 0, void 0,
     try {
         const { username, password, email, avatar } = req.body;
         const userID = parseInt(req.params.userID);
+        // implement jwt to get access to user
         const user = yield getUserById(userID);
+        console.log(user);
         // fields object to send
         const fields = {
             username: username,

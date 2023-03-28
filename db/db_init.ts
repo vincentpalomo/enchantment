@@ -23,7 +23,7 @@ async function buildTables() {
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
       description TEXT NOT NULL,
-      img TEXT
+      image TEXT
     );
 
     CREATE TABLE users (
@@ -48,7 +48,7 @@ const createInitialCards = async () => {
       {
         name: 'Hightower',
         description: 'New set aquired',
-        img: 'No Image available 😵'
+        image: 'No Image available 😵'
       }
     ]
     await Promise.all(cardsToCreate.map(createCard))

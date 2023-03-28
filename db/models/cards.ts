@@ -3,7 +3,7 @@ const client = require('../client')
 interface Cards {
   name: string,
   description: string,
-  img: string
+  image: string
 }
 
 // get all cards
@@ -22,13 +22,13 @@ const getCards = async () => {
 }
 
 // create card
-const createCard = async ( {name, description, img}: Cards ): Promise<Cards | null> => {
+const createCard = async ( {name, description, image}: Cards ): Promise<Cards | null> => {
   try {
     const { rows: [card] } = await client.query(`
-    INSERT INTO cards(name, description, img)
+    INSERT INTO cards(name, description, image)
     VALUES ($1, $2, $3)
     RETURNING *
-    `, [name, description, img])
+    `, [name, description, image])
 
     return card
   } catch (error) {
@@ -83,7 +83,7 @@ const deleteCard = async (cardID: number) => {
 const getCardById = async (cardID: number) => {
   try {
     const { rows: [card] } = await client.query(`
-    SELECT id, name, description, img FROM cards WHERE id = $1
+    SELECT id, name, description, image FROM cards WHERE id = $1
     `,[cardID]);
 
     if (!card) {
@@ -103,7 +103,7 @@ const getCardById = async (cardID: number) => {
 const getCardByName = async (name: string) => {
   try {
     const {rows: [card]} = await client.query(`
-    SELECT * FROM cards WHERE name = $1
+    SELECT id, name, description, image FROM cards WHERE name = $1
     `, [name]);
 
     if (!card) {

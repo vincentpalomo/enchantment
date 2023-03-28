@@ -45,7 +45,7 @@ cardsRouter.get('/id/:cardID', (req, res, next) => __awaiter(void 0, void 0, voi
         next({ name, message });
     }
 }));
-// /api/cards/:cardname
+// GET /api/cards/:cardname
 cardsRouter.get('/:cardname', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const cardname = req.params.cardname;
@@ -62,6 +62,51 @@ cardsRouter.get('/:cardname', (req, res, next) => __awaiter(void 0, void 0, void
     catch (error) {
         const { name, message } = error;
         next({ name, message });
+    }
+}));
+// POST /api/cards/create
+cardsRouter.post('/create', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const { name, description, image } = req.body;
+    try {
+        const checkCard = yield getCardByName(name);
+        if (checkCard) {
+            next({
+                name: 'CardExistsError',
+                message: `A card by ${name} already exists 🤔`
+            });
+        }
+        const card = yield createCard({
+            name, description, image
+        });
+        res.send({
+            message: `${name} Card has been successfully created! 🧧`,
+            card
+        });
+    }
+    catch (error) {
+        console.log(`error create card endpoint`, error);
+        next(error);
+    }
+}));
+// PATCH /api/cards/edit/:cardID
+cardsRouter.patch('/edit/:cardID', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { name, description, image } = req.body;
+        const cardID = parseInt(req.params.cardID);
+        const fields = {
+            name: name,
+            description: description,
+            image: image
+        };
+        const cardUpdate = yield editCard(cardID, fields);
+        res.send({
+            cardUpdate,
+            message: `Card updated! 👀`
+        });
+    }
+    catch (error) {
+        console.error(`error update card endpoint`, error);
+        next(error);
     }
 }));
 module.exports = cardsRouter;

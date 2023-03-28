@@ -33,7 +33,6 @@ usersRouter.get('/test', (req: Request, res: Response, next: NextFunction) => {
 // GET /api/users/
 usersRouter.get('/', async (req: Request, res: Response, next: NextFunction) => {
   const users = await getUsers()
-
   res.send({
     users
   })
@@ -98,7 +97,7 @@ usersRouter.post('/register', async (req: Request, res: Response, next: NextFunc
     if (checkUser) {
       next({
         name: 'UserExistsError',
-        message: `A user by ${username} already exists`
+        message: `A user by ${username} already exists 🤔`
       })
     }
 
@@ -145,7 +144,9 @@ usersRouter.patch('/edit/:userID', async (req: Request, res: Response, next: Nex
   try {
     const { username, password, email, avatar }: UserRequestBody = req.body
     const userID = parseInt(req.params.userID)
+    // implement jwt to get access to user
     const user = await getUserById(userID)
+    console.log(user)
 
     // fields object to send
     const fields = {
