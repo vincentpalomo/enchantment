@@ -28,7 +28,7 @@ const createUser = async ({username, password, email, isAdmin, avatar}: User): P
     const { rows: [user] } = await client.query(`
     INSERT INTO users(username, password, email, isAdmin, avatar)
     VALUES ($1, $2, $3, $4, $5)
-    RETURNING *
+    RETURNING id, username, email, avatar
     `, [username, password, email, isAdmin, avatar])
 
     delete user.password
@@ -86,15 +86,17 @@ const deleteUser = async (userID: number) => {
 const getUserById = async (userID: number) => {
   try {
     const { rows: [user] } = await client.query(`
-    SELECT * FROM users WHERE id = $1
+    SELECT id, username, email, avatar FROM users WHERE id = $1
     `, [userID])
 
     if (!user) {
       throw {
         name: 'UserNotFoundError',
-        message: `User does not exist with id: ${userID} 🤔`
+        message: `User does not exist with id: [${userID}] 🤔`
       }
     }
+
+    delete user.password
 
     return user
   } catch (error) {
@@ -106,15 +108,18 @@ const getUserById = async (userID: number) => {
 const getUserByUsername = async (username: string) => {
   try {
     const { rows: [user] } = await client.query(`
-    SELECT * FROM users WHERE username = $1
+    SELECT id, username, email, avatar FROM users WHERE username = $1
     `, [username])
 
     if (!user) {
       throw {
         name: 'UserNotFoundError',
-        message: `User with username: ${username} does not exist 🤔`
+        message: `User with username: [${username}] does not exist 🤔`
       }
     }
+
+    delete user.password
+    return user
   } catch (error) {
     console.error(error)
   }

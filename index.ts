@@ -2,6 +2,7 @@ import { config } from 'dotenv'
 import express, {Request, Response, NextFunction, Application, ErrorRequestHandler} from 'express'
 import cors from 'cors'
 import createHttpError from 'http-errors'
+import morgan from 'morgan'
 
 // dotenv
 config()
@@ -12,6 +13,7 @@ const app: Application = express()
 // middleware
 app.use(express.json())
 app.use(cors())
+app.use(morgan('dev'))
 
 // server health route
 app.get('/health', (req: Request, res: Response, next: NextFunction) => {

@@ -16,6 +16,7 @@ const dotenv_1 = require("dotenv");
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const http_errors_1 = __importDefault(require("http-errors"));
+const morgan_1 = __importDefault(require("morgan"));
 // dotenv
 (0, dotenv_1.config)();
 // express server
@@ -23,6 +24,7 @@ const app = (0, express_1.default)();
 // middleware
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
+app.use((0, morgan_1.default)('dev'));
 // server health route
 app.get('/health', (req, res, next) => {
     res.send('Server is healthy ❤');

@@ -28,7 +28,7 @@ const createUser = ({ username, password, email, isAdmin, avatar }) => __awaiter
         const { rows: [user] } = yield client.query(`
     INSERT INTO users(username, password, email, isAdmin, avatar)
     VALUES ($1, $2, $3, $4, $5)
-    RETURNING *
+    RETURNING id, username, email, avatar
     `, [username, password, email, isAdmin, avatar]);
         delete user.password;
         delete user.isAdmin;
@@ -80,14 +80,15 @@ const deleteUser = (userID) => __awaiter(void 0, void 0, void 0, function* () {
 const getUserById = (userID) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { rows: [user] } = yield client.query(`
-    SELECT * FROM users WHERE id = $1
+    SELECT id, username, email, avatar FROM users WHERE id = $1
     `, [userID]);
         if (!user) {
             throw {
                 name: 'UserNotFoundError',
-                message: `User does not exist with id: ${userID} 🤔`
+                message: `User does not exist with id: [${userID}] 🤔`
             };
         }
+        delete user.password;
         return user;
     }
     catch (error) {
@@ -98,14 +99,16 @@ const getUserById = (userID) => __awaiter(void 0, void 0, void 0, function* () {
 const getUserByUsername = (username) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { rows: [user] } = yield client.query(`
-    SELECT * FROM users WHERE username = $1
+    SELECT id, username, email, avatar FROM users WHERE username = $1
     `, [username]);
         if (!user) {
             throw {
                 name: 'UserNotFoundError',
-                message: `User with username: ${username} does not exist 🤔`
+                message: `User with username: [${username}] does not exist 🤔`
             };
         }
+        delete user.password;
+        return user;
     }
     catch (error) {
         console.error(error);

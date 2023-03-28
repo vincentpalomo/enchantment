@@ -3,15 +3,24 @@ const usersRouter = express.Router()
 
 const {
   getUsers,
+  getUserById,
+  getUserByUsername,
   createUser,
-  getUserByUsername
+  editUser
 } = require('../db/models/users')
 
 interface UserRequestBody {
+  id: number,
   username: string,
   password: string,
   email: string,
+  isAdmin: boolean,
   avatar: string
+}
+
+interface ErrorHandler extends Error {
+  name: string,
+  message: string
 }
 
 // GET /api/users/test
@@ -30,9 +39,51 @@ usersRouter.get('/', async (req: Request, res: Response, next: NextFunction) => 
   })
 })
 
+// GET /api/users/:userID
+usersRouter.get('/id/:userID', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const userID = parseInt(req.params.userID)
+    const user = await getUserById(userID)
+
+    if (!user) {
+      const error: ErrorHandler = {
+        name: 'UserNotFoundError',
+        message: `User does not exist with id: [${userID}] 🤔`
+      }
+      throw error
+    }
+
+    res.send(user)
+  } catch (error) {
+    const { name, message } = error as ErrorHandler
+    next({ name, message })
+  }
+})
+
+// GET /api/users/username/:username
+usersRouter.get('/username/:username', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const username = req.params.username
+    const user = await getUserByUsername(username)
+
+    if (!user) {
+      const error: ErrorHandler = {
+        name: 'UserNotFoundError',
+        message: `User with username: [${username}] does not exist 🤔`
+      }
+      throw error
+    }
+
+    res.send(user)
+  } catch (error) {
+    const { name, message } = error as ErrorHandler
+    next({ name, message })
+  }
+})
+
 // POST /api/users/register
 usersRouter.post('/register', async (req: Request, res: Response, next: NextFunction) => {
-  const { username, password, email, avatar }: UserRequestBody = req.body
+  const { username, password, email, isAdmin, avatar }: UserRequestBody = req.body
 
   try {
     if (password.length < 8) {
@@ -52,7 +103,7 @@ usersRouter.post('/register', async (req: Request, res: Response, next: NextFunc
     }
 
     const user = await createUser({
-      username, password, email, avatar
+      username, password, email, isAdmin, avatar
     })
 
     res.send({
@@ -89,4 +140,35 @@ usersRouter.post('/login', async (req: Request, res: Response, next:NextFunction
   }
 })
 
+// PATCH /api/users/edit/:userID
+usersRouter.patch('/edit/:userID', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { username, password, email, avatar }: UserRequestBody = req.body
+    const userID = parseInt(req.params.userID)
+    const user = await getUserById(userID)
+
+    // fields object to send
+    const fields = {
+      username: username,
+      password: password,
+      email: email,
+      avatar: avatar
+    }
+    // const fields: { [key: string]: any } = {}
+    // fields.username = username
+
+    // if(user && user.id === req.user.id)
+
+    const userUpdate = await editUser(userID, fields)
+    res.send({
+      userUpdate,
+      message: `Profile updated! 👀`
+    })
+  } catch (error) {
+    console.error(`error update user endpoint`, error)
+    next(error)
+  }
+})
+
 module.exports = usersRouter
+
