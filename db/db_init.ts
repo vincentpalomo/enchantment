@@ -1,5 +1,6 @@
 const { client } = require('./')
 const { createCard } = require('./models/cards')
+const { createUser } = require('./models/users')
 
 async function buildTables() {
   client.connect()
@@ -76,6 +77,7 @@ const createInitialUsers = async () => {
         avatar: 'No image available 😵'
       }
     ]
+    await Promise.all(usersToCreate.map(createUser))
     console.log(`Finished creating users... ✔`)
   } catch (error) {
     console.error(`Error creating users... 😵`)

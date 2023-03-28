@@ -1,5 +1,10 @@
 export {}
 const client = require('../client')
+interface Cards {
+  name: string,
+  description: string,
+  img: string
+}
 
 // get all cards
 const getCards = async () => {
@@ -17,7 +22,7 @@ const getCards = async () => {
 }
 
 // create card
-const createCard = async ( name: string, description: string, img: string ) => {
+const createCard = async ( {name, description, img}: Cards ): Promise<Cards | null> => {
   try {
     const { rows: [card] } = await client.query(`
     INSERT INTO cards(name, description, img)
@@ -28,6 +33,7 @@ const createCard = async ( name: string, description: string, img: string ) => {
     return card
   } catch (error) {
     console.error(error)
+    return null
   }
 }
 

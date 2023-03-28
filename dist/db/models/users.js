@@ -13,28 +13,30 @@ const client = require('../client');
 // get all users
 const getUsers = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { rows: user } = yield client.query(`
-    SELECT id FROM users
+        const { rows } = yield client.query(`
+    SELECT * FROM users
     `);
-        return user;
+        return rows;
     }
     catch (error) {
         console.error(error);
     }
 });
 // create user 
-const createUser = (username, password, email, isAdmin, avatar) => __awaiter(void 0, void 0, void 0, function* () {
+const createUser = ({ username, password, email, isAdmin, avatar }) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { rows: [user] } = yield client.query(`
     INSERT INTO users(username, password, email, isAdmin, avatar)
     VALUES ($1, $2, $3, $4, $5)
     RETURNING *
     `, [username, password, email, isAdmin, avatar]);
-        delete user.password && user.isAdmin;
+        delete user.password;
+        delete user.isAdmin;
         return user;
     }
     catch (error) {
         console.error(error);
+        return null;
     }
 });
 // edit user

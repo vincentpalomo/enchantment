@@ -4,11 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const usersRouter = express_1.default.Router();
-// GET /api/users/test
-usersRouter.get('/test', (req, res, next) => {
+const cardsRouter = express_1.default.Router();
+// GET /api/cards/test
+cardsRouter.get('/test', (req, res, next) => {
     res.send({
-        message: `Users endpoint operational ⚡`
+        message: `Cards endpoint operational ⚡`
     });
 });
-module.exports = usersRouter;
+module.exports = cardsRouter;

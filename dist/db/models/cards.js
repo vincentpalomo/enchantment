@@ -24,7 +24,7 @@ const getCards = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 // create card
-const createCard = (name, description, img) => __awaiter(void 0, void 0, void 0, function* () {
+const createCard = ({ name, description, img }) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { rows: [card] } = yield client.query(`
     INSERT INTO cards(name, description, img)
@@ -35,6 +35,7 @@ const createCard = (name, description, img) => __awaiter(void 0, void 0, void 0,
     }
     catch (error) {
         console.error(error);
+        return null;
     }
 });
 // edit card

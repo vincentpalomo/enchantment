@@ -16,12 +16,12 @@ apiRouter.get('/test', (req: Request, res: Response, next: NextFunction) => {
 })
 
 // ROUTER: /api/cards
-// const cardsRouter = require('./cards')
-// cardsRouter.use('/cards', cardsRouter)
+const cardsRouter = require('./cards')
+apiRouter.use('/cards', cardsRouter)
 
 // ROUTER: /api/users
-// const usersRouter = require('./users')
-// usersRouter.use('/users', usersRouter)
+const usersRouter = require('./users')
+apiRouter.use('/users', usersRouter)
 
 
 module.exports = apiRouter

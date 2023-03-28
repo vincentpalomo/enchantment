@@ -1,21 +1,29 @@
 export {}
 const client = require('../client')
 
+interface User {
+  username: string,
+  password: string,
+  email: string,
+  isAdmin: boolean,
+  avatar: string
+}
+
 // get all users
 const getUsers = async () => {
   try {
-    const { rows: user } = await client.query(`
-    SELECT id FROM users
+    const { rows } = await client.query(`
+    SELECT * FROM users
     `)
 
-    return user
+    return rows
   } catch (error) {
     console.error(error)
   }
 }
 
 // create user 
-const createUser = async (username: string, password: string, email: string, isAdmin: boolean, avatar: string) => {
+const createUser = async ({username, password, email, isAdmin, avatar}: User): Promise<User | null> => {
   try {
     const { rows: [user] } = await client.query(`
     INSERT INTO users(username, password, email, isAdmin, avatar)
@@ -23,10 +31,13 @@ const createUser = async (username: string, password: string, email: string, isA
     RETURNING *
     `, [username, password, email, isAdmin, avatar])
 
-    delete user.password && user.isAdmin
+    delete user.password
+    delete user.isAdmin
+    
     return user
   } catch (error) {
     console.error(error)
+    return null
   }
 }
 

@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const { client } = require('./');
 const { createCard } = require('./models/cards');
+const { createUser } = require('./models/users');
 function buildTables() {
     return __awaiter(this, void 0, void 0, function* () {
         client.connect();
@@ -87,6 +88,7 @@ const createInitialUsers = () => __awaiter(void 0, void 0, void 0, function* () 
                 avatar: 'No image available 😵'
             }
         ];
+        yield Promise.all(usersToCreate.map(createUser));
         console.log(`Finished creating users... ✔`);
     }
     catch (error) {
