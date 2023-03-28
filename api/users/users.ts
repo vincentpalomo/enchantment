@@ -7,3 +7,5 @@ usersRouter.get('/test', (req, res, next) => {
     message: `Users endpoint operational ⚡`
   })
 })
+
+module.exports = usersRouter

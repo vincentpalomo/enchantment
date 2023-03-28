@@ -7,3 +7,5 @@ cardsRouter.get('/test', (req, res, next) => {
     message: `Cards endpoint online ✔`
   })
 })
+
+module.exports = cardsRouter

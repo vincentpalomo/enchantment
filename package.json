@@ -1,6 +1,5 @@
 {
   "name": "fantasy-cards",
-  "type": "commonjs",
   "version": "1.0.0",
   "description": "simple fantasy card store",
   "main": "index.js",
