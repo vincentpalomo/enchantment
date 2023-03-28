@@ -58,4 +58,25 @@ usersRouter.post('/register', (req, res, next) => __awaiter(void 0, void 0, void
         next(error);
     }
 }));
+// POST /api/users/login
+usersRouter.post('/login', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const { username, password } = req.body;
+    try {
+        if (!username || !password) {
+            next({
+                name: 'MissingCredentialError',
+                message: `Please supply both a username and password 🤔`
+            });
+        }
+        const user = yield getUserByUsername(username);
+        res.send({
+            message: `You're logged in! 🙂`,
+            user
+        });
+    }
+    catch (error) {
+        console.error(`error loging endpoint`, error);
+        next(error);
+    }
+}));
 module.exports = usersRouter;

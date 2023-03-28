@@ -65,4 +65,28 @@ usersRouter.post('/register', async (req: Request, res: Response, next: NextFunc
   }
 })
 
+// POST /api/users/login
+usersRouter.post('/login', async (req: Request, res: Response, next:NextFunction) => {
+  const { username, password }: UserRequestBody = req.body
+
+  try {
+    if (!username || !password) {
+      next({
+        name: 'MissingCredentialError',
+        message: `Please supply both a username and password 🤔`
+      })
+    }
+
+    const user = await getUserByUsername(username)
+
+    res.send({
+      message: `You're logged in! 🙂`,
+      user
+    })
+  } catch (error) {
+    console.error(`error loging endpoint`, error)
+    next(error)
+  }
+})
+
 module.exports = usersRouter

@@ -13,10 +13,10 @@ const client = require('../client');
 // get all users
 const getUsers = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { rows } = yield client.query(`
-    SELECT * FROM users
+        const { rows: users } = yield client.query(`
+    SELECT id, username, avatar FROM users
     `);
-        return rows;
+        return users;
     }
     catch (error) {
         console.error(error);

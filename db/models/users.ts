@@ -12,11 +12,11 @@ interface User {
 // get all users
 const getUsers = async () => {
   try {
-    const { rows } = await client.query(`
-    SELECT * FROM users
+    const { rows: users } = await client.query(`
+    SELECT id, username, avatar FROM users
     `)
 
-    return rows
+    return users
   } catch (error) {
     console.error(error)
   }
