@@ -13,10 +13,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = require("dotenv");
-const express_1 = __importDefault(require("node_modulesold/@types/express"));
-const cors_1 = __importDefault(require("node_modulesold/@types/cors"));
-const http_errors_1 = __importDefault(require("node_modulesold/@types/http-errors"));
-const morgan_1 = __importDefault(require("node_modulesold/@types/morgan"));
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const http_errors_1 = __importDefault(require("http-errors"));
+const morgan_1 = __importDefault(require("morgan"));
 // dotenv
 (0, dotenv_1.config)();
 // express server

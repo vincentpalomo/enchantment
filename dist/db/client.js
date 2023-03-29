@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = require("dotenv");
-const pg_1 = require("node_modulesold/@types/pg");
+const pg_1 = require("pg");
 (0, dotenv_1.config)();
 // db name
 // const DB_NAME = 'fantasy-cards'

@@ -1,8 +1,8 @@
 import { config } from 'dotenv'
-import express, {Request, Response, NextFunction, Application, ErrorRequestHandler} from 'node_modulesold/@types/express'
-import cors from 'node_modulesold/@types/cors'
-import createHttpError from 'node_modulesold/@types/http-errors'
-import morgan from 'node_modulesold/@types/morgan'
+import express, {Request, Response, NextFunction, Application, ErrorRequestHandler} from 'express'
+import cors from 'cors'
+import createHttpError from 'http-errors'
+import morgan from 'morgan'
 
 // dotenv
 config()

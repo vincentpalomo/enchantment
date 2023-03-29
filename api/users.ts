@@ -1,4 +1,4 @@
-import express, {Request, Response, NextFunction} from "node_modulesold/@types/express";
+import express, {Request, Response, NextFunction} from "express";
 const usersRouter = express.Router()
 
 const {
