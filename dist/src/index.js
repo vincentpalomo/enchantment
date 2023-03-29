@@ -4,6 +4,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
-const react_dom_1 = __importDefault(require("react-dom"));
-const App_1 = __importDefault(require("./components/App"));
-react_dom_1.default.render(react_1.default.createElement(App_1.default, null), document.getElementById("root"));
+const client_1 = require("react-dom/client");
+const components_1 = require("./components");
+require("./index.css");
+const App = () => {
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(components_1.Homepage, null)));
+};
+const container = document.getElementById("root");
+const root = container ? (0, client_1.createRoot)(container) : null;
+if (root) {
+    root.render(react_1.default.createElement(App, null));
+}
