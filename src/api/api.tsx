@@ -71,3 +71,77 @@ export const fetchDeleteCard = async (cardID: number) => {
   const json = res.json();
   return json;
 };
+
+// all users
+export const fetchAllUsers = async () => {
+  const res = await fetch(`${APIURL}/users/`);
+  const json = res.json();
+  return json;
+};
+
+// user by id
+export const fetchUserByUserID = async (userID: number) => {
+  const res = await fetch(`${APIURL}/users/id/${userID}`);
+  const json = await res.json();
+  return json;
+};
+
+// user by username
+export const fetchUserByUsername = async (username: string) => {
+  const res = await fetch(`${APIURL}/users/${username}`);
+  const json = await res.json();
+  return json;
+};
+
+// register user
+export const fetchRegister = async (
+  username: string,
+  password: string,
+  email: string,
+  isAdmin: boolean,
+  avatar: string
+) => {
+  const res = await fetch(`${APIURL}/users/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: `${username}`,
+      password: `${password}`,
+      email: `${email}`,
+      isAdmin: `${isAdmin}`,
+      avatar: `${avatar}`,
+    }),
+  });
+  const json = res.json();
+  return json;
+};
+
+// login user
+export const fetchLogin = async (username: string, password: string) => {
+  const res = await fetch(`${APIURL}/users/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: `${username}`,
+      password: `${password}`,
+    }),
+  });
+  const json = res.json();
+  return json;
+};
+
+// delete user
+export const fetchDeleteUser = async (userID: number) => {
+  const res = await fetch(`${APIURL}/users/delete/${userID}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const json = res.json();
+  return json;
+};

@@ -38,7 +38,7 @@ usersRouter.get('/', async (req: Request, res: Response, next: NextFunction) => 
   })
 })
 
-// GET /api/users/:userID
+// GET /api/users/id/:userID
 usersRouter.get('/id/:userID', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const userID = parseInt(req.params.userID)
