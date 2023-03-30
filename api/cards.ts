@@ -6,7 +6,8 @@ const {
   getCardById,
   getCardByName,
   createCard,
-  editCard
+  editCard,
+  deleteCard
 } = require('../db/models/cards')
 
 interface CardRequestBody {
@@ -126,5 +127,27 @@ cardsRouter.patch('/edit/:cardID', async (req: Request, res: Response, next: Nex
     next(error)
   }
 })
+
+// DELETE /api/cards/delete/:cardID
+cardsRouter.delete('/delete/:cardID'), async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const cardID = parseInt(req.params.cardID)
+    const checkCard = await getCardById(cardID)
+
+    if (!checkCard) {
+      next({
+        name: "NoCardExistsError",
+        message: `Card with id: ${cardID} does not exist... 😵`
+      })
+    }
+
+    const deletedCard = await deleteCard(cardID)
+    res.send(deletedCard)
+
+  } catch (error) {
+    console.error(`error deleting card endpoint`, error)
+    next(error)
+  }
+}
 
 module.exports = cardsRouter
