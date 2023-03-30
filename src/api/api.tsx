@@ -134,6 +134,30 @@ export const fetchLogin = async (username: string, password: string) => {
   return json;
 };
 
+// edit user
+export const fetchEditUser = async (
+  userID: number,
+  username: string,
+  password: string,
+  email: string,
+  avatar: string
+) => {
+  const res = await fetch(`${APIURL}/users/edit/${userID}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: `${username}`,
+      password: `${password}`,
+      email: `${email}`,
+      avatar: `${avatar}`,
+    }),
+  });
+  const json = res.json();
+  return json;
+};
+
 // delete user
 export const fetchDeleteUser = async (userID: number) => {
   const res = await fetch(`${APIURL}/users/delete/${userID}`, {

@@ -6,7 +6,8 @@ const {
   getUserById,
   getUserByUsername,
   createUser,
-  editUser
+  editUser,
+  deleteUser
 } = require('../db/models/users')
 
 interface UserRequestBody {
@@ -171,5 +172,27 @@ usersRouter.patch('/edit/:userID', async (req: Request, res: Response, next: Nex
   }
 })
 
+// DELETE /api/users/delete/:userID
+usersRouter.delete('/delete/:userID', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+
+    const userID = parseInt(req.params.userID)
+    const checkUser = await getUserById(userID)
+
+    if (!checkUser) {
+      next({
+        name: `UserNotFoundError`,
+        message: `User does not exist with id: ${userID} 🤔`
+      })
+    }
+
+    const deletedUser = await deleteUser(userID)
+    res.send(deletedUser)
+    
+  } catch (error) {
+    console.error(`error deleting user endpoint`, error)
+    next(error)
+  }
+})
 module.exports = usersRouter
 
