@@ -53,7 +53,7 @@ const App = () => {
         getCards();
     }, []);
     return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(components_1.Homepage, null)));
+        react_1.default.createElement(components_1.Cards, { cards: cards })));
 };
 const container = document.getElementById("root");
 const root = container ? (0, client_1.createRoot)(container) : null;

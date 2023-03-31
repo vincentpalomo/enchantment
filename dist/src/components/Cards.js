@@ -24,12 +24,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const Cards = (props) => {
-    const [cards, setCards] = (0, react_1.useState)([]);
-    // fetch all cards
-    // store in state
-    // map state
-    return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement("div", null, "Cards")));
+const Cards = ({ cards }) => {
+    const [cardList, setCardList] = (0, react_1.useState)(cards);
+    console.log(cardList);
+    (0, react_1.useEffect)(() => {
+        setCardList(cards);
+        // watching the state of the cards prop will trigger this useEffect
+    }, [cards]);
+    return (react_1.default.createElement("div", null, cardList.map((card) => (react_1.default.createElement("div", { key: card.id },
+        react_1.default.createElement("h3", null, card.name),
+        react_1.default.createElement("p", null, card.description))))));
 };
 exports.default = Cards;

@@ -60,10 +60,25 @@ const createInitialCards = () => __awaiter(void 0, void 0, void 0, function* () 
                 name: 'Hightower',
                 description: 'New set aquired',
                 image: 'No Image available 😵'
-            }
+            },
+            {
+                name: 'Death Knight',
+                description: 'New set aquired',
+                image: 'No Image available 😵'
+            },
+            {
+                name: 'Holy Paladin',
+                description: 'New set aquired',
+                image: 'No Image available 😵'
+            },
+            {
+                name: 'Wraith Assassin',
+                description: 'New set aquired',
+                image: 'No Image available 😵'
+            },
         ];
         yield Promise.all(cardsToCreate.map(createCard));
-        console.log(`Finished creating cards... 🧧`);
+        console.log(`Finished creating cards... ✔`);
     }
     catch (error) {
         console.error(`Error creating cards... 🤔`);
