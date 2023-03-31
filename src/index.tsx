@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { Homepage } from "./components";
+import { Homepage, Cards } from "./components";
 import "./index.css";
+import { fetchAllCards } from "./api/api";
 
 const App = () => {
+  const [cards, setCards] = useState([]);
+  console.log(cards);
+
+  useEffect(() => {
+    const getCards = async () => {
+      try {
+        const cards = await fetchAllCards();
+        setCards(cards);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getCards();
+  }, []);
+
   return (
     <>
-      <Homepage />
+      {/* <Homepage /> */}
+      <Cards cards={cards} />
     </>
   );
 };

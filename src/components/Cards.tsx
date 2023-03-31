@@ -1,17 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-type Props = {};
+interface Card {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+}
 
-const Cards: React.FC = (props: Props) => {
-  const [cards, setCards] = useState("");
-  // fetch all cards
-  // store in state
-  // map state
+type Props = {
+  cards: Card[];
+};
+
+const Cards: React.FC<Props> = ({ cards }) => {
+  const [cardList, setCardList] = useState(cards);
+
+  console.log(cardList);
+
+  useEffect(() => {
+    setCardList(cards);
+    // watching the state of the cards prop will trigger this useEffect
+  }, [cards]);
 
   return (
-    <>
-      <div>Cards</div>
-    </>
+    <div>
+      {cardList.map((card) => (
+        <div key={card.id}>
+          <h3>{card.name}</h3>
+          <p>{card.description}</p>
+        </div>
+      ))}
+    </div>
   );
 };
 

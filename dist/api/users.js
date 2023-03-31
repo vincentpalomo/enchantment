@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const usersRouter = express_1.default.Router();
-const { getUsers, getUserById, getUserByUsername, createUser, editUser } = require('../db/models/users');
+const { getUsers, getUserById, getUserByUsername, createUser, editUser, deleteUser } = require('../db/models/users');
 // GET /api/users/test
 usersRouter.get('/test', (req, res, next) => {
     res.send({
@@ -28,7 +28,7 @@ usersRouter.get('/', (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         users
     });
 }));
-// GET /api/users/:userID
+// GET /api/users/id/:userID
 usersRouter.get('/id/:userID', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const userID = parseInt(req.params.userID);
@@ -143,6 +143,25 @@ usersRouter.patch('/edit/:userID', (req, res, next) => __awaiter(void 0, void 0,
     }
     catch (error) {
         console.error(`error update user endpoint`, error);
+        next(error);
+    }
+}));
+// DELETE /api/users/delete/:userID
+usersRouter.delete('/delete/:userID', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userID = parseInt(req.params.userID);
+        const checkUser = yield getUserById(userID);
+        if (!checkUser) {
+            next({
+                name: `UserNotFoundError`,
+                message: `User does not exist with id: ${userID} 🤔`
+            });
+        }
+        const deletedUser = yield deleteUser(userID);
+        res.send(deletedUser);
+    }
+    catch (error) {
+        console.error(`error deleting user endpoint`, error);
         next(error);
     }
 }));

@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cardsRouter = express_1.default.Router();
-const { getCards, getCardById, getCardByName, createCard, editCard } = require('../db/models/cards');
+const { getCards, getCardById, getCardByName, createCard, editCard, deleteCard } = require('../db/models/cards');
 // GET /api/cards/test
 cardsRouter.get('/test', (req, res, next) => {
     res.send({
@@ -109,4 +109,23 @@ cardsRouter.patch('/edit/:cardID', (req, res, next) => __awaiter(void 0, void 0,
         next(error);
     }
 }));
+// DELETE /api/cards/delete/:cardID
+cardsRouter.delete('/delete/:cardID'), (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const cardID = parseInt(req.params.cardID);
+        const checkCard = yield getCardById(cardID);
+        if (!checkCard) {
+            next({
+                name: "NoCardExistsError",
+                message: `Card with id: ${cardID} does not exist... 😵`
+            });
+        }
+        const deletedCard = yield deleteCard(cardID);
+        res.send(deletedCard);
+    }
+    catch (error) {
+        console.error(`error deleting card endpoint`, error);
+        next(error);
+    }
+});
 module.exports = cardsRouter;
