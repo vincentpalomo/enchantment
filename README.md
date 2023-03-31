@@ -32,3 +32,14 @@ Node: Framework
     Seraphina the Angelic Knight
     Morgath the Undead Lord
     Elric the Dark Sorcerer
+
+    Malakai the Demon Prince
+    Aria the Songweaver
+    Thorne the Shadow Walker
+    Lythande the Moon Mage
+    Talon the Gryphon Rider
+    Sylphie the Windcaller
+    Raistlin the Archmage
+    Vespera the Nightingale
+    Draven the Bloodthirsty
+    Mirielle the Starborn
