@@ -57,22 +57,27 @@ const createInitialCards = () => __awaiter(void 0, void 0, void 0, function* () 
         console.log(`Creating cards... 🧧`);
         const cardsToCreate = [
             {
-                name: 'Hightower',
+                name: 'Thalara the Enchantress',
                 description: 'New set aquired',
                 image: 'No Image available 😵'
             },
             {
-                name: 'Death Knight',
+                name: 'Kael the Shadowblade',
                 description: 'New set aquired',
                 image: 'No Image available 😵'
             },
             {
-                name: 'Holy Paladin',
+                name: 'Nymira the Faerie Queen',
                 description: 'New set aquired',
                 image: 'No Image available 😵'
             },
             {
-                name: 'Wraith Assassin',
+                name: 'Elyndria the Elven Ranger',
+                description: 'New set aquired',
+                image: 'No Image available 😵'
+            },
+            {
+                name: 'Lyra the Celestial',
                 description: 'New set aquired',
                 image: 'No Image available 😵'
             },

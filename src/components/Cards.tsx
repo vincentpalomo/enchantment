@@ -26,7 +26,7 @@ const Cards: React.FC<Props> = ({ cards }) => {
       {cardList.map((card) => (
         <div key={card.id}>
           <h3>{card.name}</h3>
-          <p>{card.description}</p>
+          {/* <p>{card.description}</p> */}
         </div>
       ))}
     </div>

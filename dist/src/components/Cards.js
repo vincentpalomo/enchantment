@@ -32,7 +32,6 @@ const Cards = ({ cards }) => {
         // watching the state of the cards prop will trigger this useEffect
     }, [cards]);
     return (react_1.default.createElement("div", null, cardList.map((card) => (react_1.default.createElement("div", { key: card.id },
-        react_1.default.createElement("h3", null, card.name),
-        react_1.default.createElement("p", null, card.description))))));
+        react_1.default.createElement("h3", null, card.name))))));
 };
 exports.default = Cards;
