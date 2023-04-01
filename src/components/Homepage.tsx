@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 type Props = {};
 
@@ -17,28 +18,20 @@ const Homepage = (props: Props) => {
               </p>
 
               <div className='mt-4 md:mt-8'>
-                <a
-                  href='#'
+                <Link
+                  to='/cards'
                   className='inline-block rounded border border-white bg-white px-12 py-3 text-sm font-medium text-blue-500 transition hover:bg-transparent hover:text-white focus:outline-none focus:ring focus:ring-yellow-400'
                 >
                   Get Started Today
-                </a>
+                </Link>
               </div>
             </div>
           </div>
 
           <div className='grid grid-cols-2 gap-4 md:grid-cols-1 lg:grid-cols-2'>
-            <img
-              alt='Student'
-              src='https://images.unsplash.com/photo-1621274790572-7c32596bc67f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80'
-              className='h-40 w-full object-cover rounded-2xl sm:h-56 md:h-full'
-            />
+            <img alt='Student' src='https://i.ibb.co/fMvZGtk/Lythande.png' className='h-40 w-full object-cover rounded-2xl sm:h-56 md:h-full' />
 
-            <img
-              alt='Student'
-              src='https://images.unsplash.com/photo-1567168544813-cc03465b4fa8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
-              className='h-40 w-full object-cover rounded-2xl sm:h-56 md:h-full'
-            />
+            <img alt='Student' src='https://i.ibb.co/8PnhbSw/Battle.png' className='h-40 w-full object-cover rounded-2xl sm:h-56 md:h-full' />
           </div>
         </div>
       </div>
