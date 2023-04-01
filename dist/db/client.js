@@ -7,9 +7,6 @@ const pg_1 = require("pg");
 // const DB_NAME = 'fantasy-cards'
 const DB_URL = process.env.DATABASE_URL;
 let client = new pg_1.Client({
-    connectionString: DB_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
+    connectionString: DB_URL
 });
 module.exports = client;

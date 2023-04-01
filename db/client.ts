@@ -9,10 +9,7 @@ config()
 const DB_URL = process.env.DATABASE_URL
 
 let client = new Client({
-  connectionString: DB_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  connectionString: DB_URL
 })
 
 module.exports = client

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { createRoot } from "react-dom/client";
-import { Route, Routes, Router, BrowserRouter } from "react-router-dom";
-import { Homepage, Cards, Navbar } from "./components";
-import "./index.css";
-import { fetchAllCards } from "./api/api";
+import React, { useEffect, useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import { Route, Routes, Router, BrowserRouter } from 'react-router-dom';
+import { Homepage, Cards, Navbar, About } from './components';
+import './index.css';
+import { fetchAllCards } from './api/api';
 
 const App = () => {
   const [cards, setCards] = useState([]);
@@ -28,16 +28,17 @@ const App = () => {
         <header>
           <Navbar />
         </header>
-        {/* <Homepage /> */}
         <Routes>
-          <Route path="/cards" element={<Cards cards={cards} />} />
+          <Route path='/home' element={<Homepage />} />
+          <Route path='/cards' element={<Cards cards={cards} />} />
+          <Route path='/about' element={<About />} />
         </Routes>
       </BrowserRouter>
     </>
   );
 };
 
-const container = document.getElementById("root");
+const container = document.getElementById('root');
 const root = container ? createRoot(container) : null;
 
 if (root) {
