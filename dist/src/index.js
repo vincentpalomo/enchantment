@@ -34,6 +34,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const client_1 = require("react-dom/client");
+const react_router_dom_1 = require("react-router-dom");
 const components_1 = require("./components");
 require("./index.css");
 const api_1 = require("./api/api");
@@ -53,7 +54,11 @@ const App = () => {
         getCards();
     }, []);
     return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(components_1.Cards, { cards: cards })));
+        react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
+            react_1.default.createElement("header", null,
+                react_1.default.createElement(components_1.Navbar, null)),
+            react_1.default.createElement(react_router_dom_1.Routes, null,
+                react_1.default.createElement(react_router_dom_1.Route, { path: "/cards", element: react_1.default.createElement(components_1.Cards, { cards: cards }) })))));
 };
 const container = document.getElementById("root");
 const root = container ? (0, client_1.createRoot)(container) : null;

@@ -59,27 +59,32 @@ const createInitialCards = () => __awaiter(void 0, void 0, void 0, function* () 
             {
                 name: 'Thalara the Enchantress',
                 description: 'New set aquired',
-                image: 'No Image available 😵'
+                image: 'https://i.ibb.co/mBT3wyv/Thalara.png'
             },
             {
                 name: 'Kael the Shadowblade',
                 description: 'New set aquired',
-                image: 'No Image available 😵'
+                image: 'https://i.ibb.co/TYPKNTr/Kael.png'
             },
             {
                 name: 'Nymira the Faerie Queen',
                 description: 'New set aquired',
-                image: 'No Image available 😵'
+                image: 'https://i.ibb.co/jHRs731/Nymira.png'
             },
             {
                 name: 'Elyndria the Elven Ranger',
                 description: 'New set aquired',
-                image: 'No Image available 😵'
+                image: 'https://i.ibb.co/jM26KzD/Elyndria.png'
             },
             {
                 name: 'Lyra the Celestial',
                 description: 'New set aquired',
-                image: 'No Image available 😵'
+                image: 'https://i.ibb.co/vxdLmrC/Lyra.png'
+            },
+            {
+                name: 'Azura the Elemental Witch',
+                description: 'New set aquired',
+                image: 'https://i.ibb.co/JdFFmPK/Azura.png'
             },
         ];
         yield Promise.all(cardsToCreate.map(createCard));
