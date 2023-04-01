@@ -5,18 +5,18 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-between h-16 mx-auto max-w-screen-2xl sm:px-6 lg:px-8">
       <div className="flex items-center">
-        <Link to="/openreports">
+        <Link to="/cards">
           <span className="font-serif text-4xl text-black">enchantment 🧙‍♂️</span>
         </Link>
       </div>
       <div className="flex justify-end flex-1 mr-auto">
-        <Link to="/openreports" className="active:text-pink-500">
+        <Link to="/cards" className="active:text-pink-500">
           <button className="m-2 font-serif text-xl text-black hover:text-pink-500 focus:text-pink-500">
             cards
           </button>
         </Link>
         {/* <span>------</span> */}
-        <Link to="/closedreports" className=" active:text-pink-500">
+        <Link to="/decks" className=" active:text-pink-500">
           <button className="m-2 font-serif text-xl text-black hover:text-pink-500 focus:text-pink-500">
             decks
           </button>

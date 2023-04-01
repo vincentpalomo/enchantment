@@ -24,13 +24,13 @@ const getCards = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 // create card
-const createCard = ({ name, description, image }) => __awaiter(void 0, void 0, void 0, function* () {
+const createCard = ({ name, hp, mana, description, skill_1, skill_2, skill_3, image }) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { rows: [card] } = yield client.query(`
-    INSERT INTO cards(name, description, image)
-    VALUES ($1, $2, $3)
+    INSERT INTO cards(name, hp, mana, description, skill_1, skill_2, skill_3, image)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING *
-    `, [name, description, image]);
+    `, [name, hp, mana, description, skill_1, skill_2, skill_3, image]);
         return card;
     }
     catch (error) {
@@ -80,7 +80,7 @@ const deleteCard = (cardID) => __awaiter(void 0, void 0, void 0, function* () {
 const getCardById = (cardID) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { rows: [card] } = yield client.query(`
-    SELECT id, name, description, image FROM cards WHERE id = $1
+    SELECT id, name, hp, mana, description, skill_1, skill_2, skill_3, image FROM cards WHERE id = $1
     `, [cardID]);
         if (!card) {
             throw {
@@ -98,7 +98,7 @@ const getCardById = (cardID) => __awaiter(void 0, void 0, void 0, function* () {
 const getCardByName = (name) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { rows: [card] } = yield client.query(`
-    SELECT id, name, description, image FROM cards WHERE name = $1
+    SELECT id, name, hp, mana, description, skill_1, skill_2, skill_3, image FROM cards WHERE name = $1
     `, [name]);
         if (!card) {
             throw {

@@ -2,7 +2,12 @@ export {}
 const client = require('../client')
 interface Cards {
   name: string,
+  hp: number,
+  mana: number,
   description: string,
+  skill_1: string,
+  skill_2: string,
+  skill_3: string,
   image: string
 }
 
@@ -22,13 +27,13 @@ const getCards = async () => {
 }
 
 // create card
-const createCard = async ( {name, description, image}: Cards ): Promise<Cards | null> => {
+const createCard = async ( {name, hp, mana, description, skill_1, skill_2, skill_3, image}: Cards ): Promise<Cards | null> => {
   try {
     const { rows: [card] } = await client.query(`
-    INSERT INTO cards(name, description, image)
-    VALUES ($1, $2, $3)
+    INSERT INTO cards(name, hp, mana, description, skill_1, skill_2, skill_3, image)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING *
-    `, [name, description, image])
+    `, [name, hp, mana, description, skill_1, skill_2, skill_3, image])
 
     return card
   } catch (error) {
@@ -83,7 +88,7 @@ const deleteCard = async (cardID: number) => {
 const getCardById = async (cardID: number) => {
   try {
     const { rows: [card] } = await client.query(`
-    SELECT id, name, description, image FROM cards WHERE id = $1
+    SELECT id, name, hp, mana, description, skill_1, skill_2, skill_3, image FROM cards WHERE id = $1
     `,[cardID]);
 
     if (!card) {
@@ -103,7 +108,7 @@ const getCardById = async (cardID: number) => {
 const getCardByName = async (name: string) => {
   try {
     const {rows: [card]} = await client.query(`
-    SELECT id, name, description, image FROM cards WHERE name = $1
+    SELECT id, name, hp, mana, description, skill_1, skill_2, skill_3, image FROM cards WHERE name = $1
     `, [name]);
 
     if (!card) {

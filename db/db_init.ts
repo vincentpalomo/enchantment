@@ -22,7 +22,12 @@ async function buildTables() {
     CREATE TABLE cards (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
+      hp INT NOT NULL,
+      mana INT NOT NULL,
       description TEXT NOT NULL,
+      skill_1 VARCHAR(50) NOT NULL,
+      skill_2 VARCHAR(50) NOT NULL,
+      skill_3 VARCHAR(50) NOT NULL,
       image TEXT
     );
 
@@ -47,32 +52,62 @@ const createInitialCards = async () => {
     const cardsToCreate = [
       {
         name: 'Thalara the Enchantress',
-        description: 'New set aquired',
+        hp: 5,
+        mana: 6,
+        description: 'description needed 🧙‍♂️',
+        skill_1: 'Enchantment',
+        skill_2: 'Charm',
+        skill_3: 'Illusion',
         image: 'https://i.ibb.co/mBT3wyv/Thalara.png'
       },
       {
         name: 'Kael the Shadowblade',
-        description: 'New set aquired',
+        hp: 6,
+        mana: 5,
+        description: 'description needed 🧙‍♂️',
+        skill_1: 'Stealth',
+        skill_2: 'Backstab',
+        skill_3: 'Shadow Blade',
         image: 'https://i.ibb.co/TYPKNTr/Kael.png'
       },
       {
         name: 'Nymira the Faerie Queen',
-        description: 'New set aquired',
+        hp: 7,
+        mana: 7,
+        description: 'Skills: Nature Magic, Flight, Fairy Dust',
+        skill_1: 'Nature Magic',
+        skill_2: 'Flight',
+        skill_3: 'Fairy Dust',
         image: 'https://i.ibb.co/jHRs731/Nymira.png'
       },
       {
         name: 'Elyndria the Elven Ranger',
-        description: 'New set aquired',
+        hp: 8,
+        mana: 4,
+        description: 'Skills: Archery, Tracking, Nature Magic',
+        skill_1: 'Quickshot',
+        skill_2: 'Tracking',
+        skill_3:  'Piercing Arrow',
         image: 'https://i.ibb.co/jM26KzD/Elyndria.png'
       },
       {
         name: 'Lyra the Celestial',
-        description: 'New set aquired',
+        hp: 9,
+        mana: 8,
+        description: 'Skills: Divine Magic, Healing, ',
+        skill_1: 'Divine Magic',
+        skill_2: 'Healing',
+        skill_3: 'Protection',
         image: 'https://i.ibb.co/vxdLmrC/Lyra.png'
       },
       {
         name: 'Azura the Elemental Witch',
-        description: 'New set aquired',
+        hp: 4,
+        mana: 10,
+        description: 'Skills: Elemental Magic, Pyromancy, Cryomancy',
+        skill_1: 'Elemental Magic',
+        skill_2: 'Pyromancy',
+        skill_3: 'Cryomancy',
         image: 'https://i.ibb.co/JdFFmPK/Azura.png'
       },
     ]
