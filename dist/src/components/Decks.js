@@ -12,7 +12,7 @@ const Decks = (props) => {
                 react_1.default.createElement("div", { className: 'max-w-screen-xl px-4 mx-auto md:px-8' },
                     react_1.default.createElement("div", { className: 'grid gap-8 sm:grid-cols-2 sm:gap-12' },
                         react_1.default.createElement("div", { className: 'overflow-hidden bg-gray-100 rounded-lg shadow-lg h-80 sm:rounded-none sm:shadow-none md:h-auto' },
-                            react_1.default.createElement("img", { src: 'https://i.ibb.co/9gFVsdz/Lythande.png', loading: 'lazy', alt: 'Photo by Jeremy Cai', className: 'object-cover object-center w-full h-full rounded-2xl' })),
+                            react_1.default.createElement("img", { src: 'https://i.ibb.co/9gFVsdz/Lythande.png', alt: 'mage', className: 'object-cover object-center w-full h-full rounded-2xl' })),
                         react_1.default.createElement("div", { className: 'flex flex-col items-center justify-center sm:items-start md:py-24 lg:py-32 xl:py-64' },
                             react_1.default.createElement("p", { className: 'mb-4 text-sm font-semibold text-indigo-500 uppercase md:text-base' }, "Decks"),
                             react_1.default.createElement("h1", { className: 'mb-2 text-2xl font-bold text-center text-gray-800 sm:text-left md:text-3xl' }, "currently not available"),

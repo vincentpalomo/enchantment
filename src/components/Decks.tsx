@@ -13,8 +13,7 @@ const Decks = (props: Props) => {
               <div className='overflow-hidden bg-gray-100 rounded-lg shadow-lg h-80 sm:rounded-none sm:shadow-none md:h-auto'>
                 <img
                   src='https://i.ibb.co/9gFVsdz/Lythande.png'
-                  loading='lazy'
-                  alt='Photo by Jeremy Cai'
+                  alt='mage'
                   className='object-cover object-center w-full h-full rounded-2xl'
                 />
               </div>
