@@ -39,7 +39,7 @@ const Register = (props: Props) => {
     <div className='py-6 bg-white sm:py-8 lg:py-12'>
       <div className='px-4 mx-auto max-w-screen-2xl md:px-8'>
         <h2 className='mb-4 text-2xl font-bold text-center text-gray-800 md:mb-8 lg:text-3xl'>
-          Login
+          Register
         </h2>
 
         <form className='max-w-lg mx-auto border rounded-lg' onSubmit={register}>
