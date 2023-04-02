@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Register = exports.Login = exports.About = exports.Navbar = exports.Cards = exports.Homepage = void 0;
+exports.Decks = exports.Register = exports.Login = exports.About = exports.Navbar = exports.Cards = exports.Homepage = void 0;
 var Homepage_1 = require("./Homepage");
 Object.defineProperty(exports, "Homepage", { enumerable: true, get: function () { return __importDefault(Homepage_1).default; } });
 var Cards_1 = require("./Cards");
@@ -16,3 +16,5 @@ var Login_1 = require("./Login");
 Object.defineProperty(exports, "Login", { enumerable: true, get: function () { return __importDefault(Login_1).default; } });
 var Register_1 = require("./Register");
 Object.defineProperty(exports, "Register", { enumerable: true, get: function () { return __importDefault(Register_1).default; } });
+var Decks_1 = require("./Decks");
+Object.defineProperty(exports, "Decks", { enumerable: true, get: function () { return __importDefault(Decks_1).default; } });

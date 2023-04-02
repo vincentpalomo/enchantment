@@ -62,6 +62,7 @@ const App = () => {
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/', element: react_1.default.createElement(components_1.Homepage, null) }),
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/cards', element: react_1.default.createElement(components_1.Cards, { cards: cards }) }),
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/about', element: react_1.default.createElement(components_1.About, null) }),
+                react_1.default.createElement(react_router_dom_1.Route, { path: '/decks', element: react_1.default.createElement(components_1.Decks, null) }),
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/login', element: react_1.default.createElement(components_1.Login, null) }),
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/register', element: react_1.default.createElement(components_1.Register, null) })))));
 };

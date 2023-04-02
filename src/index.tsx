@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import { Homepage, Cards, Navbar, About, Login, Register } from './components';
+import { Homepage, Cards, Navbar, About, Login, Register, Decks } from './components';
 import './index.css';
 import { fetchAllCards } from './api/api';
 
@@ -33,6 +33,7 @@ const App = () => {
           <Route path='/' element={<Homepage />} />
           <Route path='/cards' element={<Cards cards={cards} />} />
           <Route path='/about' element={<About />} />
+          <Route path='/decks' element={<Decks />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
         </Routes>
