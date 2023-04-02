@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchDeleteUser = exports.fetchEditUser = exports.fetchLogin = exports.fetchRegister = exports.fetchUserByUsername = exports.fetchUserByUserID = exports.fetchAllUsers = exports.fetchDeleteCard = exports.fetchEditCard = exports.fetchCreateCard = exports.fetchCardByCardname = exports.fetchCardById = exports.fetchAllCards = exports.APIURL = void 0;
-exports.APIURL = "http://localhost:8000/api";
+exports.APIURL = "https://enchantment.fly.dev/api";
 // all cards
 const fetchAllCards = () => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch(`${exports.APIURL}/cards/`);

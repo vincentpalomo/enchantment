@@ -48,7 +48,7 @@ const Cards = ({ cards }) => {
                                 react_1.default.createElement("p", { className: "text-sm text-white" },
                                     "Mana: ",
                                     card.mana),
-                                react_1.default.createElement("h5", { className: "text-lg text-pink-500" }, "skills:"),
+                                react_1.default.createElement("h5", { className: "text-lg font-bold text-pink-500" }, "skills:"),
                                 react_1.default.createElement("p", { className: "text-sm text-white" }, card.skill_1),
                                 react_1.default.createElement("p", { className: "text-sm text-white" }, card.skill_2),
                                 react_1.default.createElement("p", { className: "text-sm text-white" }, card.skill_3))))))))))));

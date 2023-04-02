@@ -1,4 +1,4 @@
-export const APIURL = "http://localhost:8000/api";
+export const APIURL = "https://enchantment.fly.dev/api";
 
 // all cards
 export const fetchAllCards = async () => {

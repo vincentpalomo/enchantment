@@ -4,18 +4,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
+const react_router_dom_1 = require("react-router-dom");
 const Homepage = (props) => {
-    return (react_1.default.createElement("section", null,
-        react_1.default.createElement("div", { className: "mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8" },
-            react_1.default.createElement("div", { className: "grid grid-cols-1 gap-4 md:grid-cols-2" },
-                react_1.default.createElement("div", { className: "bg-blue-600 p-8 md:p-12 lg:px-16 lg:py-24" },
-                    react_1.default.createElement("div", { className: "mx-auto max-w-xl text-center" },
-                        react_1.default.createElement("h2", { className: "text-2xl font-bold text-white md:text-3xl" }, "Lorem, ipsum dolor sit amet consectetur adipisicing elit"),
-                        react_1.default.createElement("p", { className: "hidden text-white/90 sm:mt-4 sm:block" }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas tempus tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim et fermentum, augue. Aliquet amet volutpat quisque ut interdum tincidunt duis."),
-                        react_1.default.createElement("div", { className: "mt-4 md:mt-8" },
-                            react_1.default.createElement("a", { href: "#", className: "inline-block rounded border border-white bg-white px-12 py-3 text-sm font-medium text-blue-500 transition hover:bg-transparent hover:text-white focus:outline-none focus:ring focus:ring-yellow-400" }, "Get Started Today")))),
-                react_1.default.createElement("div", { className: "grid grid-cols-2 gap-4 md:grid-cols-1 lg:grid-cols-2" },
-                    react_1.default.createElement("img", { alt: "Student", src: "https://images.unsplash.com/photo-1621274790572-7c32596bc67f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80", className: "h-40 w-full object-cover sm:h-56 md:h-full" }),
-                    react_1.default.createElement("img", { alt: "Student", src: "https://images.unsplash.com/photo-1567168544813-cc03465b4fa8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", className: "h-40 w-full object-cover sm:h-56 md:h-full" }))))));
+    return (react_1.default.createElement("section", { className: "relative flex items-center w-full bg-white" },
+        react_1.default.createElement("div", { className: "relative items-center w-full px-5 py-24 mx-auto md:px-12 lg:px-16 max-w-7xl" },
+            react_1.default.createElement("div", { className: "relative flex-col items-start m-auto align-middle" },
+                react_1.default.createElement("div", { className: "grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-24" },
+                    react_1.default.createElement("div", { className: "relative items-center gap-12 m-auto lg:inline-flex md:order-first" },
+                        react_1.default.createElement("div", { className: "max-w-xl text-center lg:text-left" },
+                            react_1.default.createElement("div", null,
+                                react_1.default.createElement("p", { className: "text-2xl font-medium tracking-tight text-black sm:text-4xl" }, "I am a short heading"),
+                                react_1.default.createElement("p", { className: "max-w-xl mt-4 text-base tracking-tight text-gray-600" }, "Use this paragraph to share information about your company or products. Make it engaging and interesting, and showcase your brand's personality. Thanks for visiting our website!")),
+                            react_1.default.createElement("div", { className: "flex flex-col items-center justify-center gap-3 mt-10 lg:flex-row lg:justify-start" },
+                                react_1.default.createElement(react_router_dom_1.Link, { to: "/cards", className: "items-center justify-center w-full px-6 py-2.5 text-center text-white duration-200 bg-black border-2 border-black rounded-full nline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none lg:w-auto focus-visible:outline-black text-sm focus-visible:ring-black" }, "Get started"),
+                                react_1.default.createElement(react_router_dom_1.Link, { to: "/about", className: "inline-flex items-center justify-center text-sm font-semibold text-black duration-200 hover:text-blue-500 focus:outline-none focus-visible:outline-gray-600" },
+                                    "Learn more",
+                                    react_1.default.createElement("span", { "aria-hidden": "true" }, " \u2192 "))))),
+                    react_1.default.createElement("div", { className: "order-first block w-full mt-12 aspect-square lg:mt-0" },
+                        react_1.default.createElement("img", { className: "object-cover object-center w-full mx-auto bg-black rounded-2xl lg:ml-auto", alt: "hero", src: "https://i.ibb.co/8PnhbSw/Battle.png" })))))));
 };
 exports.default = Homepage;

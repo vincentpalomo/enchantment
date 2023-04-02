@@ -54,7 +54,7 @@ const Cards: React.FC<Props> = ({ cards }) => {
                     <div className="transition-all transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
                       <p className="text-sm text-white">HP: {card.hp}</p>
                       <p className="text-sm text-white">Mana: {card.mana}</p>
-                      <h5 className="text-lg text-pink-500">skills:</h5>
+                      <h5 className="text-lg font-bold text-pink-500">skills:</h5>
                       <p className="text-sm text-white">{card.skill_1}</p>
                       <p className="text-sm text-white">{card.skill_2}</p>
                       <p className="text-sm text-white">{card.skill_3}</p>

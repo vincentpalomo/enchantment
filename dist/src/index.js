@@ -58,9 +58,11 @@ const App = () => {
             react_1.default.createElement("header", null,
                 react_1.default.createElement(components_1.Navbar, null)),
             react_1.default.createElement(react_router_dom_1.Routes, null,
-                react_1.default.createElement(react_router_dom_1.Route, { path: "/cards", element: react_1.default.createElement(components_1.Cards, { cards: cards }) })))));
+                react_1.default.createElement(react_router_dom_1.Route, { path: '/home', element: react_1.default.createElement(components_1.Homepage, null) }),
+                react_1.default.createElement(react_router_dom_1.Route, { path: '/cards', element: react_1.default.createElement(components_1.Cards, { cards: cards }) }),
+                react_1.default.createElement(react_router_dom_1.Route, { path: '/about', element: react_1.default.createElement(components_1.About, null) })))));
 };
-const container = document.getElementById("root");
+const container = document.getElementById('root');
 const root = container ? (0, client_1.createRoot)(container) : null;
 if (root) {
     root.render(react_1.default.createElement(App, null));
