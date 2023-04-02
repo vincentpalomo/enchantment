@@ -22,6 +22,7 @@ const Register = (props: Props) => {
               <input
                 name='username'
                 value={username}
+                required
                 onChange={(e) => setUsername(e.target.value)}
                 className='w-full px-3 py-2 text-gray-800 transition duration-100 border rounded outline-none bg-gray-50 ring-indigo-300 focus:ring'
               />
@@ -32,6 +33,7 @@ const Register = (props: Props) => {
               <input
                 name='email'
                 value={email}
+                required
                 onChange={(e) => setEmail(e.target.value)}
                 className='w-full px-3 py-2 text-gray-800 transition duration-100 border rounded outline-none bg-gray-50 ring-indigo-300 focus:ring'
               />
@@ -43,6 +45,7 @@ const Register = (props: Props) => {
                 type='password'
                 name='password'
                 value={password}
+                required
                 onChange={(e) => setPassword(e.target.value)}
                 className='w-full px-3 py-2 text-gray-800 transition duration-100 border rounded outline-none bg-gray-50 ring-indigo-300 focus:ring'
               />
@@ -52,15 +55,15 @@ const Register = (props: Props) => {
               type='submit'
               className='block px-8 py-3 text-sm font-semibold text-center text-white transition duration-100 bg-gray-800 rounded-lg outline-none ring-gray-300 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base'
             >
-              Log in
+              Register
             </button>
           </div>
 
           <div className='flex items-center justify-center p-4 bg-gray-100'>
             <p className='text-sm text-center text-gray-500'>
-              Don't have an account?{' '}
-              <Link to='/register' className='text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700'>
-                Register
+              Already have an account?{' '}
+              <Link to='/login' className='text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700'>
+                Login
               </Link>
             </p>
           </div>
