@@ -1,4 +1,4 @@
-import { fetchRegister } from '@src/api/api';
+import { fetchRegister } from '../api/api';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
