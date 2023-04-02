@@ -7,6 +7,7 @@ import { fetchAllCards } from './api/api';
 
 const App = () => {
   const [cards, setCards] = useState([]);
+  const [user, setUser] = useState('');
   console.log(cards);
 
   useEffect(() => {
