@@ -2,6 +2,9 @@
 
 Simple fantasy card store
 
+netlify link: https://enchantment.netlify.app/
+backend api: https://enchantment.fly.dev/
+
 ## Tech Stack
 
 Postgres: DB
