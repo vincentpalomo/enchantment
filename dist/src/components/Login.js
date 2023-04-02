@@ -52,6 +52,7 @@ const Login = (props) => {
             if (login.status) {
                 // setMessage('Invalid username or password, please try again 🧙‍♂️');
                 setMessage(login.message);
+                props.setUser(username);
             }
             else {
                 history('/cards');

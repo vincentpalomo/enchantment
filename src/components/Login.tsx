@@ -2,7 +2,9 @@ import { fetchLogin } from '../api/api';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-type Props = {};
+type Props = {
+  setUser: (username: string) => void;
+};
 
 const Login = (props: Props) => {
   const [username, setUsername] = useState('');
@@ -23,6 +25,7 @@ const Login = (props: Props) => {
       if (login.status) {
         // setMessage('Invalid username or password, please try again 🧙‍♂️');
         setMessage(login.message);
+        props.setUser(username);
       } else {
         history('/cards');
       }

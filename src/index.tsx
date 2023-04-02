@@ -3,12 +3,14 @@ import { createRoot } from 'react-dom/client';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { Homepage, Cards, Navbar, About, Login, Register, Decks } from './components';
 import './index.css';
-import { fetchAllCards } from './api/api';
+import { fetchAllCards, fetchUserByUsername } from './api/api';
 
 const App = () => {
   const [cards, setCards] = useState([]);
   const [user, setUser] = useState('');
+  const [online, setOnline] = useState(false);
   console.log(cards);
+  console.log(online);
 
   useEffect(() => {
     const getCards = async () => {
@@ -23,6 +25,23 @@ const App = () => {
     getCards();
   }, []);
 
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const currentUser = await fetchUserByUsername(user);
+        console.log(currentUser);
+        if (currentUser) {
+          setOnline(true);
+        } else {
+          setOnline(false);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getUser();
+  }, [user]);
+
   return (
     <>
       <BrowserRouter>
@@ -34,7 +53,7 @@ const App = () => {
           <Route path='/cards' element={<Cards cards={cards} />} />
           <Route path='/about' element={<About />} />
           <Route path='/decks' element={<Decks />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<Login setUser={setUser} />} />
           <Route path='/register' element={<Register />} />
         </Routes>
       </BrowserRouter>

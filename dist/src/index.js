@@ -41,7 +41,9 @@ const api_1 = require("./api/api");
 const App = () => {
     const [cards, setCards] = (0, react_1.useState)([]);
     const [user, setUser] = (0, react_1.useState)('');
+    const [online, setOnline] = (0, react_1.useState)(false);
     console.log(cards);
+    console.log(online);
     (0, react_1.useEffect)(() => {
         const getCards = () => __awaiter(void 0, void 0, void 0, function* () {
             try {
@@ -54,6 +56,24 @@ const App = () => {
         });
         getCards();
     }, []);
+    (0, react_1.useEffect)(() => {
+        const getUser = () => __awaiter(void 0, void 0, void 0, function* () {
+            try {
+                const currentUser = yield (0, api_1.fetchUserByUsername)(user);
+                console.log(currentUser);
+                if (currentUser) {
+                    setOnline(true);
+                }
+                else {
+                    setOnline(false);
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
+        });
+        getUser();
+    }, [user]);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
             react_1.default.createElement("header", null,
@@ -63,7 +83,7 @@ const App = () => {
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/cards', element: react_1.default.createElement(components_1.Cards, { cards: cards }) }),
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/about', element: react_1.default.createElement(components_1.About, null) }),
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/decks', element: react_1.default.createElement(components_1.Decks, null) }),
-                react_1.default.createElement(react_router_dom_1.Route, { path: '/login', element: react_1.default.createElement(components_1.Login, null) }),
+                react_1.default.createElement(react_router_dom_1.Route, { path: '/login', element: react_1.default.createElement(components_1.Login, { setUser: setUser }) }),
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/register', element: react_1.default.createElement(components_1.Register, null) })))));
 };
 const container = document.getElementById('root');
