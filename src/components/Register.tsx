@@ -25,7 +25,7 @@ const Register = (props: Props) => {
         setMessage('Missing credentials...😥');
       }
       const register = await fetchRegister(username, password, email, isAdmin, avatar);
-      if (register.error) {
+      if (register.status) {
         setMessage('Invalid credentials, please try again 🧙‍♂️');
       } else {
         history('/cards');
