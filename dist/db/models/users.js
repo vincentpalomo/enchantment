@@ -76,6 +76,19 @@ const deleteUser = (userID) => __awaiter(void 0, void 0, void 0, function* () {
         console.error(error);
     }
 });
+// get user
+const getUser = (username, password) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const user = yield getUserByUsername(username);
+        if (user.password !== password) {
+            throw new Error(`Incorrect Password, please try again...🧙‍♂️`);
+        }
+        return user;
+    }
+    catch (error) {
+        console.error(error);
+    }
+});
 // get user by id
 const getUserById = (userID) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -99,7 +112,7 @@ const getUserById = (userID) => __awaiter(void 0, void 0, void 0, function* () {
 const getUserByUsername = (username) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { rows: [user] } = yield client.query(`
-    SELECT id, username, email, avatar FROM users WHERE username = $1
+    SELECT id, username, password FROM users WHERE username = $1
     `, [username]);
         if (!user) {
             throw {
@@ -107,7 +120,6 @@ const getUserByUsername = (username) => __awaiter(void 0, void 0, void 0, functi
                 message: `User with username: [${username}] does not exist 🤔`
             };
         }
-        delete user.password;
         return user;
     }
     catch (error) {
@@ -115,6 +127,7 @@ const getUserByUsername = (username) => __awaiter(void 0, void 0, void 0, functi
     }
 });
 module.exports = {
+    getUser,
     getUsers,
     createUser,
     editUser,

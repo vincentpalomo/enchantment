@@ -26,7 +26,8 @@ const Register = (props: Props) => {
       }
       const register = await fetchRegister(username, password, email, isAdmin, avatar);
       if (register.status) {
-        setMessage('Invalid credentials, please try again 🧙‍♂️');
+        // setMessage('Invalid credentials, please try again 🧙‍♂️');
+        setMessage(register.message);
       } else {
         history('/cards');
       }
@@ -82,7 +83,8 @@ const Register = (props: Props) => {
               />
             </div>
 
-            <span>{message}</span>
+            <span className='text-center text-red-500'>{message}</span>
+
             <button
               type='submit'
               className='block px-8 py-3 text-sm font-semibold text-center text-white transition duration-100 bg-gray-800 rounded-lg outline-none ring-gray-300 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base'>

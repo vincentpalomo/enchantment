@@ -1,4 +1,7 @@
-export const APIURL = "https://enchantment.fly.dev/api";
+// online api
+export const APIURL = 'https://enchantment.fly.dev/api';
+// local api
+// export const APIURL = 'http://localhost:8080/api';
 
 // all cards
 export const fetchAllCards = async () => {
@@ -24,9 +27,9 @@ export const fetchCardByCardname = async (cardname: string) => {
 // create card
 export const fetchCreateCard = async (name: string, description: string, image: string) => {
   const res = await fetch(`${APIURL}/cards/create`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       name: `${name}`,
@@ -46,9 +49,9 @@ export const fetchEditCard = async (
   image: string
 ) => {
   const res = await fetch(`${APIURL}/cards/edit/${cardID}`, {
-    method: "PATCH",
+    method: 'PATCH',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       name: `${name}`,
@@ -63,9 +66,9 @@ export const fetchEditCard = async (
 // delete card
 export const fetchDeleteCard = async (cardID: number) => {
   const res = await fetch(`${APIURL}/cards/delete/${cardID}`, {
-    method: "DELETE",
+    method: 'DELETE',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
   const json = res.json();
@@ -102,9 +105,9 @@ export const fetchRegister = async (
   avatar: string
 ) => {
   const res = await fetch(`${APIURL}/users/register`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       username: `${username}`,
@@ -121,9 +124,9 @@ export const fetchRegister = async (
 // login user
 export const fetchLogin = async (username: string, password: string) => {
   const res = await fetch(`${APIURL}/users/login`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       username: `${username}`,
@@ -143,9 +146,9 @@ export const fetchEditUser = async (
   avatar: string
 ) => {
   const res = await fetch(`${APIURL}/users/edit/${userID}`, {
-    method: "PATCH",
+    method: 'PATCH',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       username: `${username}`,
@@ -161,9 +164,9 @@ export const fetchEditUser = async (
 // delete user
 export const fetchDeleteUser = async (userID: number) => {
   const res = await fetch(`${APIURL}/users/delete/${userID}`, {
-    method: "DELETE",
+    method: 'DELETE',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
   const json = res.json();

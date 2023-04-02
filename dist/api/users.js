@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const usersRouter = express_1.default.Router();
-const { getUsers, getUserById, getUserByUsername, createUser, editUser, deleteUser } = require('../db/models/users');
+const { getUser, getUsers, getUserById, getUserByUsername, createUser, editUser, deleteUser } = require('../db/models/users');
 // GET /api/users/test
 usersRouter.get('/test', (req, res, next) => {
     res.send({
@@ -106,11 +106,19 @@ usersRouter.post('/login', (req, res, next) => __awaiter(void 0, void 0, void 0,
                 message: `Please supply both a username and password 🤔`
             });
         }
-        const user = yield getUserByUsername(username);
-        res.send({
-            message: `You're logged in! 🙂`,
-            user
-        });
+        const user = yield getUser(username, password);
+        if (!user) {
+            next({
+                name: 'IncorrectPasswordError',
+                message: 'Incorrect Password, please try again...🧙‍'
+            });
+        }
+        else {
+            res.send({
+                message: `You're logged in! 🙂`,
+                user
+            });
+        }
     }
     catch (error) {
         console.error(`error loging endpoint`, error);

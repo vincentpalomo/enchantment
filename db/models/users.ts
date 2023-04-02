@@ -82,6 +82,21 @@ const deleteUser = async (userID: number) => {
   }
 }
 
+// get user
+const getUser = async (username: string, password: string) => {
+  try {
+    const user = await getUserByUsername(username)
+    
+    if (user.password !== password) {
+      throw new Error(`Incorrect Password, please try again...🧙‍♂️`)
+    }
+
+    return user
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 // get user by id
 const getUserById = async (userID: number) => {
   try {
@@ -108,7 +123,7 @@ const getUserById = async (userID: number) => {
 const getUserByUsername = async (username: string) => {
   try {
     const { rows: [user] } = await client.query(`
-    SELECT id, username, email, avatar FROM users WHERE username = $1
+    SELECT id, username, password FROM users WHERE username = $1
     `, [username])
 
     if (!user) {
@@ -118,7 +133,6 @@ const getUserByUsername = async (username: string) => {
       }
     }
 
-    delete user.password
     return user
   } catch (error) {
     console.error(error)
@@ -126,6 +140,7 @@ const getUserByUsername = async (username: string) => {
 }
 
 module.exports = {
+  getUser,
   getUsers,
   createUser,
   editUser,

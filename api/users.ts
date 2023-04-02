@@ -2,6 +2,7 @@ import express, {Request, Response, NextFunction} from "express";
 const usersRouter = express.Router()
 
 const {
+  getUser,
   getUsers,
   getUserById,
   getUserByUsername,
@@ -128,12 +129,20 @@ usersRouter.post('/login', async (req: Request, res: Response, next:NextFunction
       })
     }
 
-    const user = await getUserByUsername(username)
+    const user = await getUser(username, password)
 
-    res.send({
-      message: `You're logged in! 🙂`,
-      user
-    })
+    if (!user) {
+      next({
+        name: 'IncorrectPasswordError',
+        message: 'Incorrect Password, please try again...🧙‍'
+      })
+    } else {
+      res.send({
+        message: `You're logged in! 🙂`,
+        user
+      })
+    }
+
   } catch (error) {
     console.error(`error loging endpoint`, error)
     next(error)

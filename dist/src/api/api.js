@@ -10,7 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchDeleteUser = exports.fetchEditUser = exports.fetchLogin = exports.fetchRegister = exports.fetchUserByUsername = exports.fetchUserByUserID = exports.fetchAllUsers = exports.fetchDeleteCard = exports.fetchEditCard = exports.fetchCreateCard = exports.fetchCardByCardname = exports.fetchCardById = exports.fetchAllCards = exports.APIURL = void 0;
-exports.APIURL = "https://enchantment.fly.dev/api";
+// online api
+exports.APIURL = 'https://enchantment.fly.dev/api';
+// local api
+// export const APIURL = 'http://localhost:8080/api';
 // all cards
 const fetchAllCards = () => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch(`${exports.APIURL}/cards/`);
@@ -35,9 +38,9 @@ exports.fetchCardByCardname = fetchCardByCardname;
 // create card
 const fetchCreateCard = (name, description, image) => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch(`${exports.APIURL}/cards/create`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             name: `${name}`,
@@ -52,9 +55,9 @@ exports.fetchCreateCard = fetchCreateCard;
 // edit card
 const fetchEditCard = (cardID, name, description, image) => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch(`${exports.APIURL}/cards/edit/${cardID}`, {
-        method: "PATCH",
+        method: 'PATCH',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             name: `${name}`,
@@ -69,9 +72,9 @@ exports.fetchEditCard = fetchEditCard;
 // delete card
 const fetchDeleteCard = (cardID) => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch(`${exports.APIURL}/cards/delete/${cardID}`, {
-        method: "DELETE",
+        method: 'DELETE',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
     });
     const json = res.json();
@@ -102,9 +105,9 @@ exports.fetchUserByUsername = fetchUserByUsername;
 // register user
 const fetchRegister = (username, password, email, isAdmin, avatar) => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch(`${exports.APIURL}/users/register`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             username: `${username}`,
@@ -121,9 +124,9 @@ exports.fetchRegister = fetchRegister;
 // login user
 const fetchLogin = (username, password) => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch(`${exports.APIURL}/users/login`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             username: `${username}`,
@@ -137,9 +140,9 @@ exports.fetchLogin = fetchLogin;
 // edit user
 const fetchEditUser = (userID, username, password, email, avatar) => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch(`${exports.APIURL}/users/edit/${userID}`, {
-        method: "PATCH",
+        method: 'PATCH',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             username: `${username}`,
@@ -155,9 +158,9 @@ exports.fetchEditUser = fetchEditUser;
 // delete user
 const fetchDeleteUser = (userID) => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch(`${exports.APIURL}/users/delete/${userID}`, {
-        method: "DELETE",
+        method: 'DELETE',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
     });
     const json = res.json();
