@@ -11,9 +11,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchDeleteUser = exports.fetchEditUser = exports.fetchLogin = exports.fetchRegister = exports.fetchUserByUsername = exports.fetchUserByUserID = exports.fetchAllUsers = exports.fetchDeleteCard = exports.fetchEditCard = exports.fetchCreateCard = exports.fetchCardByCardname = exports.fetchCardById = exports.fetchAllCards = exports.APIURL = void 0;
 // online api
-exports.APIURL = 'https://enchantment.fly.dev/api';
+// export const APIURL = 'https://enchantment.fly.dev/api';
 // local api
-// export const APIURL = 'http://localhost:8080/api';
+exports.APIURL = 'http://localhost:8080/api';
 // all cards
 const fetchAllCards = () => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch(`${exports.APIURL}/cards/`);
@@ -97,7 +97,11 @@ const fetchUserByUserID = (userID) => __awaiter(void 0, void 0, void 0, function
 exports.fetchUserByUserID = fetchUserByUserID;
 // user by username
 const fetchUserByUsername = (username) => __awaiter(void 0, void 0, void 0, function* () {
-    const res = yield fetch(`${exports.APIURL}/users/${username}`);
+    const res = yield fetch(`${exports.APIURL}/users/${username}`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
     const json = yield res.json();
     return json;
 });

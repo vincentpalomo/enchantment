@@ -40,6 +40,7 @@ const Login = (props) => {
     const [password, setPassword] = (0, react_1.useState)('');
     const [message, setMessage] = (0, react_1.useState)('');
     const history = (0, react_router_dom_1.useNavigate)();
+    console.log(username);
     const login = (e) => __awaiter(void 0, void 0, void 0, function* () {
         e.preventDefault();
         setUsername('');
@@ -49,12 +50,14 @@ const Login = (props) => {
                 setMessage('username or password missing');
             }
             const login = yield (0, api_1.fetchLogin)(username, password);
-            if (login.status) {
+            if (!login.message) {
+                console.log(username, password);
                 // setMessage('Invalid username or password, please try again 🧙‍♂️');
                 setMessage(login.message);
-                props.setUser(username);
             }
             else {
+                console.log(username);
+                props.setUser(username);
                 history('/cards');
             }
         }

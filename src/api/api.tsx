@@ -1,7 +1,7 @@
 // online api
-export const APIURL = 'https://enchantment.fly.dev/api';
+// export const APIURL = 'https://enchantment.fly.dev/api';
 // local api
-// export const APIURL = 'http://localhost:8080/api';
+export const APIURL = 'http://localhost:8080/api';
 
 // all cards
 export const fetchAllCards = async () => {
@@ -42,12 +42,7 @@ export const fetchCreateCard = async (name: string, description: string, image: 
 };
 
 // edit card
-export const fetchEditCard = async (
-  cardID: number,
-  name: string,
-  description: string,
-  image: string
-) => {
+export const fetchEditCard = async (cardID: number, name: string, description: string, image: string) => {
   const res = await fetch(`${APIURL}/cards/edit/${cardID}`, {
     method: 'PATCH',
     headers: {
@@ -91,19 +86,17 @@ export const fetchUserByUserID = async (userID: number) => {
 
 // user by username
 export const fetchUserByUsername = async (username: string) => {
-  const res = await fetch(`${APIURL}/users/${username}`);
+  const res = await fetch(`${APIURL}/users/${username}`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
   const json = await res.json();
   return json;
 };
 
 // register user
-export const fetchRegister = async (
-  username: string,
-  password: string,
-  email: string,
-  isAdmin: boolean,
-  avatar: string
-) => {
+export const fetchRegister = async (username: string, password: string, email: string, isAdmin: boolean, avatar: string) => {
   const res = await fetch(`${APIURL}/users/register`, {
     method: 'POST',
     headers: {
@@ -138,13 +131,7 @@ export const fetchLogin = async (username: string, password: string) => {
 };
 
 // edit user
-export const fetchEditUser = async (
-  userID: number,
-  username: string,
-  password: string,
-  email: string,
-  avatar: string
-) => {
+export const fetchEditUser = async (userID: number, username: string, password: string, email: string, avatar: string) => {
   const res = await fetch(`${APIURL}/users/edit/${userID}`, {
     method: 'PATCH',
     headers: {

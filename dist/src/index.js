@@ -44,6 +44,7 @@ const App = () => {
     const [online, setOnline] = (0, react_1.useState)(false);
     console.log(cards);
     console.log(online);
+    console.log(user);
     (0, react_1.useEffect)(() => {
         const getCards = () => __awaiter(void 0, void 0, void 0, function* () {
             try {
@@ -72,7 +73,9 @@ const App = () => {
                 console.error(error);
             }
         });
-        getUser();
+        if (user !== '') {
+            getUser();
+        }
     }, [user]);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement(react_router_dom_1.BrowserRouter, null,

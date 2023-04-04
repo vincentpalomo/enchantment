@@ -11,6 +11,7 @@ const App = () => {
   const [online, setOnline] = useState(false);
   console.log(cards);
   console.log(online);
+  console.log(user);
 
   useEffect(() => {
     const getCards = async () => {
@@ -39,7 +40,9 @@ const App = () => {
         console.error(error);
       }
     };
-    getUser();
+    if (user !== '') {
+      getUser();
+    }
   }, [user]);
 
   return (

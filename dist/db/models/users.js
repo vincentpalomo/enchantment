@@ -83,7 +83,13 @@ const getUser = (username, password) => __awaiter(void 0, void 0, void 0, functi
         if (user.password !== password) {
             throw new Error(`Incorrect Password, please try again...🧙‍♂️`);
         }
-        return user;
+        const filteredUser = {
+            id: user.id,
+            username: user.username,
+            avatar: user.avatar
+        };
+        console.log(filteredUser);
+        return filteredUser;
     }
     catch (error) {
         console.error(error);
@@ -112,7 +118,7 @@ const getUserById = (userID) => __awaiter(void 0, void 0, void 0, function* () {
 const getUserByUsername = (username) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { rows: [user] } = yield client.query(`
-    SELECT id, username, password FROM users WHERE username = $1
+    SELECT id, username, password, avatar FROM users WHERE username = $1
     `, [username]);
         if (!user) {
             throw {

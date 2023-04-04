@@ -91,7 +91,14 @@ const getUser = async (username: string, password: string) => {
       throw new Error(`Incorrect Password, please try again...🧙‍♂️`)
     }
 
-    return user
+    const filteredUser = {
+      id: user.id,
+      username: user.username,
+      avatar: user.avatar
+    }
+
+    console.log(filteredUser)
+    return filteredUser
   } catch (error) {
     console.error(error)
   }
@@ -123,7 +130,7 @@ const getUserById = async (userID: number) => {
 const getUserByUsername = async (username: string) => {
   try {
     const { rows: [user] } = await client.query(`
-    SELECT id, username, password FROM users WHERE username = $1
+    SELECT id, username, password, avatar FROM users WHERE username = $1
     `, [username])
 
     if (!user) {
