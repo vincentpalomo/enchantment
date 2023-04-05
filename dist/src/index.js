@@ -42,7 +42,7 @@ const App = () => {
     const [cards, setCards] = (0, react_1.useState)([]);
     const [user, setUser] = (0, react_1.useState)('');
     const [online, setOnline] = (0, react_1.useState)(false);
-    console.log(cards);
+    // console.log(cards);
     console.log(online);
     console.log(user);
     (0, react_1.useEffect)(() => {
@@ -60,8 +60,7 @@ const App = () => {
     (0, react_1.useEffect)(() => {
         const getUser = () => __awaiter(void 0, void 0, void 0, function* () {
             try {
-                const currentUser = yield (0, api_1.fetchUserByUsername)(user);
-                console.log(currentUser);
+                const currentUser = yield (0, api_1.fetchActiveUser)(user);
                 if (currentUser) {
                     setOnline(true);
                 }

@@ -3,13 +3,13 @@ import { createRoot } from 'react-dom/client';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { Homepage, Cards, Navbar, About, Login, Register, Decks } from './components';
 import './index.css';
-import { fetchAllCards, fetchUserByUsername } from './api/api';
+import { fetchActiveUser, fetchAllCards, fetchUserByUsername } from './api/api';
 
 const App = () => {
   const [cards, setCards] = useState([]);
   const [user, setUser] = useState('');
   const [online, setOnline] = useState(false);
-  console.log(cards);
+  // console.log(cards);
   console.log(online);
   console.log(user);
 
@@ -29,8 +29,7 @@ const App = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const currentUser = await fetchUserByUsername(user);
-        console.log(currentUser);
+        const currentUser = await fetchActiveUser(user);
         if (currentUser) {
           setOnline(true);
         } else {

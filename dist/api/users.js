@@ -59,6 +59,21 @@ usersRouter.get('/:username', (req, res, next) => __awaiter(void 0, void 0, void
             };
             throw error;
         }
+        delete user.password;
+        res.send(user);
+    }
+    catch (error) {
+        const { name, message } = error;
+        next({ name, message });
+    }
+}));
+// GET /api/users/active
+usersRouter.get('/active/:username', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const username = req.params.username;
+        const user = yield getUserByUsername(username);
+        // delete password before sending to frontend
+        delete user.password;
         res.send(user);
     }
     catch (error) {

@@ -75,7 +75,25 @@ usersRouter.get('/:username', async (req: Request, res: Response, next: NextFunc
       throw error
     }
 
+    delete user.password
+
     res.send(user)
+  } catch (error) {
+    const { name, message } = error as ErrorHandler
+    next({ name, message })
+  }
+})
+
+// GET /api/users/active
+usersRouter.get('/active/:username', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const username = req.params.username
+    const user = await getUserByUsername(username)
+
+    // delete password before sending to frontend
+    delete user.password
+
+    res.send(user) 
   } catch (error) {
     const { name, message } = error as ErrorHandler
     next({ name, message })
@@ -203,5 +221,6 @@ usersRouter.delete('/delete/:userID', async (req: Request, res: Response, next: 
     next(error)
   }
 })
+
 module.exports = usersRouter
 

@@ -127,14 +127,14 @@ const createInitialUsers = async () => {
         password: 'bestbb',
         email: 'jinx@dachshund.com',
         isAdmin: true,
-        avatar: 'No image available 😵'
+        avatar: 'https://i.ibb.co/F0nkS0z/Avatar.png'
       },
       {
         username: 'voodoo',
         password: 'smolboi',
         email: 'voodoo@dachshund.com',
         isAdmin: false,
-        avatar: 'No image available 😵'
+        avatar: 'https://i.ibb.co/F0nkS0z/Avatar.png'
       }
     ]
     await Promise.all(usersToCreate.map(createUser))

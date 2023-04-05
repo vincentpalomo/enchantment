@@ -85,6 +85,8 @@ const deleteUser = async (userID: number) => {
 // get user
 const getUser = async (username: string, password: string) => {
   try {
+
+    console.log(username, password, 'db 89')
     const user = await getUserByUsername(username)
     
     if (user.password !== password) {
@@ -97,7 +99,6 @@ const getUser = async (username: string, password: string) => {
       avatar: user.avatar
     }
 
-    console.log(filteredUser)
     return filteredUser
   } catch (error) {
     console.error(error)

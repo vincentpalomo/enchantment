@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fetchDeleteUser = exports.fetchEditUser = exports.fetchLogin = exports.fetchRegister = exports.fetchUserByUsername = exports.fetchUserByUserID = exports.fetchAllUsers = exports.fetchDeleteCard = exports.fetchEditCard = exports.fetchCreateCard = exports.fetchCardByCardname = exports.fetchCardById = exports.fetchAllCards = exports.APIURL = void 0;
+exports.fetchDeleteUser = exports.fetchEditUser = exports.fetchLogin = exports.fetchRegister = exports.fetchActiveUser = exports.fetchUserByUsername = exports.fetchUserByUserID = exports.fetchAllUsers = exports.fetchDeleteCard = exports.fetchEditCard = exports.fetchCreateCard = exports.fetchCardByCardname = exports.fetchCardById = exports.fetchAllCards = exports.APIURL = void 0;
 // online api
 // export const APIURL = 'https://enchantment.fly.dev/api';
 // local api
@@ -97,15 +97,18 @@ const fetchUserByUserID = (userID) => __awaiter(void 0, void 0, void 0, function
 exports.fetchUserByUserID = fetchUserByUserID;
 // user by username
 const fetchUserByUsername = (username) => __awaiter(void 0, void 0, void 0, function* () {
-    const res = yield fetch(`${exports.APIURL}/users/${username}`, {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+    const res = yield fetch(`${exports.APIURL}/users/${username}`);
     const json = yield res.json();
     return json;
 });
 exports.fetchUserByUsername = fetchUserByUsername;
+// active user
+const fetchActiveUser = (username) => __awaiter(void 0, void 0, void 0, function* () {
+    const res = yield fetch(`${exports.APIURL}/users/active/${username}`);
+    const json = yield res.json();
+    return json;
+});
+exports.fetchActiveUser = fetchActiveUser;
 // register user
 const fetchRegister = (username, password, email, isAdmin, avatar) => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch(`${exports.APIURL}/users/register`, {
