@@ -125,7 +125,7 @@ usersRouter.post('/login', (req, res, next) => __awaiter(void 0, void 0, void 0,
         if (!user) {
             next({
                 name: 'IncorrectPasswordError',
-                message: 'Incorrect Password, please try again...🧙‍'
+                message: 'Invalid credentials, please try again...🧙‍'
             });
         }
         else {

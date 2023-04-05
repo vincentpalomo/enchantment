@@ -50,13 +50,11 @@ const Login = (props) => {
                 setMessage('username or password missing');
             }
             const login = yield (0, api_1.fetchLogin)(username, password);
-            if (!login.message) {
-                console.log(username, password);
+            if (login.status) {
                 // setMessage('Invalid username or password, please try again 🧙‍♂️');
                 setMessage(login.message);
             }
             else {
-                console.log(username);
                 props.setUser(username);
                 history('/cards');
             }

@@ -152,7 +152,7 @@ usersRouter.post('/login', async (req: Request, res: Response, next:NextFunction
     if (!user) {
       next({
         name: 'IncorrectPasswordError',
-        message: 'Incorrect Password, please try again...🧙‍'
+        message: 'Invalid credentials, please try again...🧙‍'
       })
     } else {
       res.send({
