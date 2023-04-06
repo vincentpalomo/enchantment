@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+type Props = {
+  online: boolean;
+};
+
+const Navbar = (props: Props) => {
+  console.log(props.online);
   return (
     <div className='flex items-center justify-between h-16 mx-auto max-w-screen-2xl sm:px-6 lg:px-8'>
       <div className='flex items-center'>

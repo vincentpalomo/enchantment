@@ -9,9 +9,6 @@ const App = () => {
   const [cards, setCards] = useState([]);
   const [user, setUser] = useState('');
   const [online, setOnline] = useState(false);
-  // console.log(cards);
-  console.log(online);
-  console.log(user);
 
   useEffect(() => {
     const getCards = async () => {
@@ -48,7 +45,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <header>
-          <Navbar />
+          <Navbar online={online} />
         </header>
         <Routes>
           <Route path='/' element={<Homepage />} />
