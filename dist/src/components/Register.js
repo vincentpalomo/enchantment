@@ -58,6 +58,8 @@ const Register = (props) => {
                 setMessage(register.message);
             }
             else {
+                localStorage.setItem('user', username);
+                props.setUser(username);
                 history('/cards');
             }
         }

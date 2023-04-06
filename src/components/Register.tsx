@@ -2,7 +2,9 @@ import { fetchRegister } from '../api/api';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-type Props = {};
+type Props = {
+  setUser: (username: string) => void;
+};
 
 const Register = (props: Props) => {
   const [username, setUsername] = useState('');
@@ -29,6 +31,8 @@ const Register = (props: Props) => {
         // setMessage('Invalid credentials, please try again 🧙‍♂️');
         setMessage(register.message);
       } else {
+        localStorage.setItem('user', username);
+        props.setUser(username);
         history('/cards');
       }
     } catch (error) {

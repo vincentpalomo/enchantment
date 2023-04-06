@@ -53,7 +53,7 @@ const App = () => {
           <Route path='/about' element={<About />} />
           <Route path='/decks' element={<Decks />} />
           <Route path='/login' element={<Login setUser={setUser} />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/register' element={<Register setUser={setUser} />} />
         </Routes>
       </BrowserRouter>
     </>

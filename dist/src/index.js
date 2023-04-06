@@ -83,7 +83,7 @@ const App = () => {
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/about', element: react_1.default.createElement(components_1.About, null) }),
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/decks', element: react_1.default.createElement(components_1.Decks, null) }),
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/login', element: react_1.default.createElement(components_1.Login, { setUser: setUser }) }),
-                react_1.default.createElement(react_router_dom_1.Route, { path: '/register', element: react_1.default.createElement(components_1.Register, null) })))));
+                react_1.default.createElement(react_router_dom_1.Route, { path: '/register', element: react_1.default.createElement(components_1.Register, { setUser: setUser }) })))));
 };
 const container = document.getElementById('root');
 const root = container ? (0, client_1.createRoot)(container) : null;
