@@ -27,6 +27,7 @@ const Login = (props: Props) => {
         // setMessage('Invalid username or password, please try again 🧙‍♂️');
         setMessage(login.message);
       } else {
+        localStorage.setItem('user', username);
         props.setUser(username);
         history('/cards');
       }

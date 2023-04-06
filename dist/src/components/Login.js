@@ -55,6 +55,7 @@ const Login = (props) => {
                 setMessage(login.message);
             }
             else {
+                localStorage.setItem('user', username);
                 props.setUser(username);
                 history('/cards');
             }

@@ -40,11 +40,8 @@ require("./index.css");
 const api_1 = require("./api/api");
 const App = () => {
     const [cards, setCards] = (0, react_1.useState)([]);
-    const [user, setUser] = (0, react_1.useState)('');
+    const [user, setUser] = (0, react_1.useState)(localStorage.getItem('user') || '');
     const [online, setOnline] = (0, react_1.useState)(false);
-    // console.log(cards);
-    console.log(online);
-    console.log(user);
     (0, react_1.useEffect)(() => {
         const getCards = () => __awaiter(void 0, void 0, void 0, function* () {
             try {
@@ -79,7 +76,7 @@ const App = () => {
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
             react_1.default.createElement("header", null,
-                react_1.default.createElement(components_1.Navbar, null)),
+                react_1.default.createElement(components_1.Navbar, { online: online, user: user, setUser: setUser, setOnline: setOnline })),
             react_1.default.createElement(react_router_dom_1.Routes, null,
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/', element: react_1.default.createElement(components_1.Homepage, null) }),
                 react_1.default.createElement(react_router_dom_1.Route, { path: '/cards', element: react_1.default.createElement(components_1.Cards, { cards: cards }) }),

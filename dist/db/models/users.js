@@ -79,7 +79,6 @@ const deleteUser = (userID) => __awaiter(void 0, void 0, void 0, function* () {
 // get user
 const getUser = (username, password) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log(username, password, 'db 89');
         const user = yield getUserByUsername(username);
         if (user.password !== password) {
             throw new Error(`Incorrect Password, please try again...🧙‍♂️`);

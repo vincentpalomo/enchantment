@@ -3,11 +3,11 @@ import { createRoot } from 'react-dom/client';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { Homepage, Cards, Navbar, About, Login, Register, Decks } from './components';
 import './index.css';
-import { fetchActiveUser, fetchAllCards, fetchUserByUsername } from './api/api';
+import { fetchActiveUser, fetchAllCards } from './api/api';
 
 const App = () => {
   const [cards, setCards] = useState([]);
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState(localStorage.getItem('user') || '');
   const [online, setOnline] = useState(false);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <header>
-          <Navbar online={online} />
+          <Navbar online={online} user={user} setUser={setUser} setOnline={setOnline} />
         </header>
         <Routes>
           <Route path='/' element={<Homepage />} />
