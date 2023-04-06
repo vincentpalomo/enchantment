@@ -33,7 +33,7 @@ const Navbar = (props) => {
             react_1.default.createElement(react_router_dom_1.Link, { to: '/register', className: ' active:text-pink-500' },
                 react_1.default.createElement("button", { className: 'm-2 font-serif text-xl text-black hover:text-pink-500 focus:text-pink-500' }, "register")))) : (react_1.default.createElement(react_1.default.Fragment, null,
             react_1.default.createElement("img", { alt: 'avatar', src: 'https://i.ibb.co/F0nkS0z/Avatar.png', className: 'object-cover w-10 h-10 rounded-full' }),
-            react_1.default.createElement("span", { className: 'm-2 font-serif text-xl' }, props.user),
+            react_1.default.createElement("span", { className: 'm-2 font-serif text-xl text-pink-500' }, props.user),
             react_1.default.createElement(react_router_dom_1.Link, { to: '/', className: 'active:text-pink-500' },
                 react_1.default.createElement("button", { onClick: logout, className: 'm-2 font-serif text-xl text-black hover:text-pink-500 focus:text-pink-500 ' }, "logout")))))));
 };

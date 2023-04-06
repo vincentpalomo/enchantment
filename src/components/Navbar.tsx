@@ -97,7 +97,7 @@ const Navbar = (props: Props) => {
               src='https://i.ibb.co/F0nkS0z/Avatar.png'
               className='object-cover w-10 h-10 rounded-full'
             />
-            <span className='m-2 font-serif text-xl'>{props.user}</span>
+            <span className='m-2 font-serif text-xl text-pink-500'>{props.user}</span>
             <Link to='/' className='active:text-pink-500'>
               <button
                 onClick={logout}
