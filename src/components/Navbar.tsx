@@ -34,9 +34,9 @@ const Navbar = (props: Props) => {
   return (
     <div className='relative z-50 flex items-center justify-between h-16 mx-auto max-w-screen-2xl sm:px-6 lg:px-8'>
       <div className='flex items-center'>
-        <Link to='/cards'>
+        {/* <Link to='/cards'>
           <span className='font-serif text-4xl text-black'>enchantment 🧙‍♂️</span>
-        </Link>
+        </Link> */}
 
         <div
           className={`${
@@ -103,7 +103,7 @@ const Navbar = (props: Props) => {
         </div>
 
         <button
-          className='block mr-auto text-gray-800 lg:hidden hover:text-gray-600 focus:text-gray-600'
+          className='block mr-auto text-4xl text-gray-800 lg:hidden hover:text-gray-600 focus:text-gray-600'
           onClick={handleToggleMenu} // Add your function to handle toggling the menu
         >
           🧙‍♂️
