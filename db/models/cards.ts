@@ -1,5 +1,7 @@
 export {}
 const client = require('../client')
+import { QueryResult } from 'pg'
+
 interface Cards {
   name: string,
   hp: number,
@@ -25,6 +27,19 @@ const getCards = async () => {
     console.error(error)
   }
 }
+
+// const getCards = async (): Promise<Cards[]> => {
+//   try {
+//     const { rows: cards }: QueryResult<Cards> = await client.query(`
+//       SELECT id, name, hp, mana, description, skill_1, skill_2, skill_3, image FROM cards
+//     `);
+//     return cards;
+//   } catch (error) {
+//     console.error(error);
+//     return [];
+//   }
+// }
+
 
 // create card
 const createCard = async ( {name, hp, mana, description, skill_1, skill_2, skill_3, image}: Cards ): Promise<Cards | null> => {

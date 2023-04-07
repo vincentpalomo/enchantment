@@ -1,7 +1,7 @@
 // online api
-// export const APIURL = 'https://enchantment.fly.dev/api';
+export const APIURL = 'https://enchantment.fly.dev/api';
 // local api
-export const APIURL = 'http://localhost:8080/api';
+// export const APIURL = 'http://localhost:8080/api';
 
 // all cards
 export const fetchAllCards = async () => {

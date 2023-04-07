@@ -23,6 +23,17 @@ const getCards = () => __awaiter(void 0, void 0, void 0, function* () {
         console.error(error);
     }
 });
+// const getCards = async (): Promise<Cards[]> => {
+//   try {
+//     const { rows: cards }: QueryResult<Cards> = await client.query(`
+//       SELECT id, name, hp, mana, description, skill_1, skill_2, skill_3, image FROM cards
+//     `);
+//     return cards;
+//   } catch (error) {
+//     console.error(error);
+//     return [];
+//   }
+// }
 // create card
 const createCard = ({ name, hp, mana, description, skill_1, skill_2, skill_3, image }) => __awaiter(void 0, void 0, void 0, function* () {
     try {
