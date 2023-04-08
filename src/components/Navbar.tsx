@@ -33,7 +33,7 @@ const Navbar = (props: Props) => {
 
   return (
     <div className='relative z-50 flex items-center justify-between h-16 mx-auto max-w-screen-2xl sm:px-6 lg:px-8'>
-      <div className='flex items-center'>
+      <div className='flex items-center ml-auto '>
         {/* <Link to='/cards'>
           <span className='font-serif text-4xl text-black'>enchantment 🧙‍♂️</span>
         </Link> */}
@@ -41,7 +41,7 @@ const Navbar = (props: Props) => {
         <div
           className={`${
             isMenuOpen ? 'block' : 'hidden'
-          } lg:hidden absolute top-16 bg-white py-2 px-4`}>
+          } lg:hidden absolute top-16 bg-white py-2 px-4 right-0 border space-y-1`}>
           <Link
             to='/'
             className='block font-serif text-xl text-black hover:text-pink-500'
@@ -84,11 +84,11 @@ const Navbar = (props: Props) => {
           ) : (
             <>
               <div className='flex'>
-                <img
+                {/* <img
                   alt='avatar'
                   src='https://i.ibb.co/F0nkS0z/Avatar.png'
                   className='object-cover w-10 h-10 rounded-full'
-                />
+                /> */}
                 <span className='block m-1 font-serif text-xl text-pink-500'>{props.user}</span>
               </div>
               <Link to='/' className='active:text-pink-500'>
@@ -103,10 +103,18 @@ const Navbar = (props: Props) => {
         </div>
 
         <button
-          className='block mr-auto text-4xl text-gray-800 lg:hidden hover:text-gray-600 focus:text-gray-600'
+          className='block m-3 text-4xl text-gray-800 lg:hidden hover:text-gray-600 focus:text-gray-600'
           onClick={handleToggleMenu} // Add your function to handle toggling the menu
         >
-          🧙‍♂️
+          {props.online ? (
+            <img
+              alt='avatar'
+              src='https://i.ibb.co/F0nkS0z/Avatar.png'
+              className='object-cover w-10 h-10 rounded-full'
+            />
+          ) : (
+            '🧙‍♂️'
+          )}
         </button>
       </div>
 
