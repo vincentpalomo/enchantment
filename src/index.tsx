@@ -5,10 +5,17 @@ import { Homepage, Cards, Navbar, About, Login, Register, Decks } from './compon
 import './index.css';
 import { fetchActiveUser, fetchAllCards } from './api/api';
 
+type LoggedUser = {
+  id: number;
+  username: string;
+  avatar: string;
+};
+
 const App = () => {
   const [cards, setCards] = useState([]);
   const [user, setUser] = useState(localStorage.getItem('user') || '');
   const [online, setOnline] = useState(false);
+  const [loggedUser, setLoggedUser] = useState<LoggedUser | null>(null);
 
   useEffect(() => {
     const getCards = async () => {
@@ -29,6 +36,7 @@ const App = () => {
         const currentUser = await fetchActiveUser(user);
         if (currentUser) {
           setOnline(true);
+          setLoggedUser(currentUser);
         } else {
           setOnline(false);
         }
@@ -45,7 +53,13 @@ const App = () => {
     <>
       <BrowserRouter>
         <header>
-          <Navbar online={online} user={user} setUser={setUser} setOnline={setOnline} />
+          <Navbar
+            online={online}
+            user={user}
+            setUser={setUser}
+            setOnline={setOnline}
+            loggedUser={loggedUser}
+          />
         </header>
         <Routes>
           <Route path='/' element={<Homepage />} />

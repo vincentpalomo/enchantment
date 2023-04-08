@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+type LoggedUser = {
+  id: number;
+  username: string;
+  avatar: string;
+};
+
 type Props = {
   online: boolean;
   user: string;
+  loggedUser: LoggedUser | null;
   setUser: (username: string) => void;
   setOnline: (arg0: boolean) => void;
 };
@@ -20,8 +27,6 @@ const Navbar = (props: Props) => {
     navigate('/');
     setIsMenuOpen(false);
   };
-
-  console.log(props.online);
 
   const handleToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -89,7 +94,9 @@ const Navbar = (props: Props) => {
                   src='https://i.ibb.co/F0nkS0z/Avatar.png'
                   className='object-cover w-10 h-10 rounded-full'
                 /> */}
-                <span className='block m-1 font-serif text-xl text-pink-500'>{props.user}</span>
+                <span className='block m-1 font-serif text-xl text-pink-500'>
+                  {props.loggedUser?.username}
+                </span>
               </div>
               <Link to='/' className='active:text-pink-500'>
                 <button
@@ -109,7 +116,7 @@ const Navbar = (props: Props) => {
           {props.online ? (
             <img
               alt='avatar'
-              src='https://i.ibb.co/F0nkS0z/Avatar.png'
+              src={props.loggedUser?.avatar}
               className='object-cover w-10 h-10 rounded-full'
             />
           ) : (
@@ -120,7 +127,7 @@ const Navbar = (props: Props) => {
 
       <div className='flex items-center'>
         <Link to='/cards'>
-          <span className='hidden font-serif text-4xl text-black'>enchantment 🧙‍♂️</span>
+          <span className='hidden font-serif text-4xl text-black lg:inline'>enchantment 🧙‍♂️</span>
         </Link>
       </div>
       <div className='justify-end flex-1 hidden mr-auto lg:flex'>

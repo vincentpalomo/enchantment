@@ -11,7 +11,6 @@ const Login = (props: Props) => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const history = useNavigate();
-  console.log(username);
 
   const login = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
