@@ -1,4 +1,4 @@
-# fly.toml file generated for enchantment on 2023-04-01T21:17:16-05:00
+# fly.toml file generated for enchantment on 2023-04-08T21:22:40-05:00
 
 app = "enchantment"
 kill_signal = "SIGINT"
@@ -7,7 +7,6 @@ primary_region = "dfw"
 processes = []
 
 [env]
-  DATABASE_URL = 'postgres://enchantment:6FwJNOzxDlNYsFh@enchantment-db.flycast:5432/enchantment?sslmode=false'
 
 [experimental]
   auto_rollback = true

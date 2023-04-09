@@ -26,7 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const react_router_dom_1 = require("react-router-dom");
 const Navbar = (props) => {
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
     const [isMenuOpen, setIsMenuOpen] = (0, react_1.useState)(false);
     const navigate = (0, react_router_dom_1.useNavigate)();
     const logout = () => {
@@ -74,7 +74,7 @@ const Navbar = (props) => {
                 react_1.default.createElement("button", { className: 'm-2 font-serif text-xl text-black hover:text-pink-500 focus:text-pink-500' }, "login")),
             react_1.default.createElement(react_router_dom_1.Link, { to: '/register', className: ' active:text-pink-500' },
                 react_1.default.createElement("button", { className: 'm-2 font-serif text-xl text-black hover:text-pink-500 focus:text-pink-500' }, "register")))) : (react_1.default.createElement(react_1.default.Fragment, null,
-            react_1.default.createElement("img", { src: (_c = props.loggedUser) === null || _c === void 0 ? void 0 : _c.avatar, alt: '', className: 'object-cover w-10 h-10 rounded-full' }),
+            ((_c = props.loggedUser) === null || _c === void 0 ? void 0 : _c.username) === 'jinx' ? (react_1.default.createElement("img", { alt: 'avatar', src: 'https://i.ibb.co/F0nkS0z/Avatar.png', className: 'object-cover w-10 h-10 rounded-full' })) : (react_1.default.createElement("img", { src: (_d = props.loggedUser) === null || _d === void 0 ? void 0 : _d.avatar, alt: '', className: 'object-cover w-10 h-10 rounded-full' })),
             react_1.default.createElement("span", { className: 'm-2 font-serif text-xl text-pink-500' }, props.user),
             react_1.default.createElement(react_router_dom_1.Link, { to: '/', className: 'active:text-pink-500' },
                 react_1.default.createElement("button", { onClick: logout, className: 'm-2 font-serif text-xl text-black hover:text-pink-500 focus:text-pink-500 ' }, "logout")))))));
