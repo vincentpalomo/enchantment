@@ -1,9 +1,9 @@
-# fly.toml file generated for enchantment on 2023-04-08T21:22:40-05:00
+# fly.toml file generated for enchantment on 2023-04-08T22:42:08-05:00
 
 app = "enchantment"
 kill_signal = "SIGINT"
 kill_timeout = 5
-primary_region = "dfw"
+primary_region = "den"
 processes = []
 
 [env]
