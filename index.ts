@@ -52,9 +52,13 @@ const handle = app.listen(PORT, async () => {
     await client.connect()
     console.log(`Database is online! 🔥`)
   } catch (error) {
-    console.error('Database is not online! 😵')
+    console.error('Database is offline! 😵')
+    handle.close(() => {
+      console.log('Server closed...🤔')
+      process.exit(1)
+    })
   }
 })
 
 
-module.exports = { app, handle} 
+module.exports = { app, handle } 

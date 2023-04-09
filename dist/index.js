@@ -55,7 +55,11 @@ const handle = app.listen(PORT, () => __awaiter(void 0, void 0, void 0, function
         console.log(`Database is online! 🔥`);
     }
     catch (error) {
-        console.error('Database is not online! 😵');
+        console.error('Database is offline! 😵');
+        handle.close(() => {
+            console.log('Server closed...🤔');
+            process.exit(1);
+        });
     }
 }));
 module.exports = { app, handle };
