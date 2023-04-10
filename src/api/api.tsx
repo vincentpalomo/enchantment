@@ -1,5 +1,7 @@
-// online api
-export const APIURL = 'https://enchantment.fly.dev/api';
+// online render
+export const APIURL = 'https://enchantment.onrender.com/api';
+// online api fly io
+// export const APIURL = 'https://enchantment.fly.dev/api';
 // local api
 // export const APIURL = 'http://localhost:8080/api';
 
