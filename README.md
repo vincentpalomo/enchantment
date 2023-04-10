@@ -3,7 +3,7 @@
 Simple fantasy card store
 
 netlify link: https://enchantment.netlify.app/
-backend api: https://enchantment.fly.dev/
+backend api: https://enchantment.onrender.com/
 
 ## Tech Stack
 
