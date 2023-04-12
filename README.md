@@ -12,7 +12,7 @@ Express: Server
 React: Frontend
 Node: Framework
 
-# Characters
+# Characters 👀
 
     Thalara the Enchantress
     Kael the Shadowblade
