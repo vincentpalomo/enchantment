@@ -7,10 +7,10 @@ backend api: https://enchantment.onrender.com/
 
 ## Tech Stack
 
-Postgres: DB
-Express: Server
-React: Frontend
-Node: Framework
+Postgres: DB 💾
+Express: Server 🖥
+React: Frontend 💻
+Node: Framework 🛠
 
 # Characters 👀
 
