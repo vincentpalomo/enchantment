@@ -1,9 +1,11 @@
 // online render
-export const APIURL = 'https://enchantment.onrender.com/api';
+// export const APIURL = 'https://enchantment.onrender.com/api';
 // online api fly io
 // export const APIURL = 'https://enchantment.fly.dev/api';
 // local api
 // export const APIURL = 'http://localhost:8080/api';
+// coolify
+export const APIURL = 'https://enchantment.lucidstudio.xyz/api';
 
 // all cards
 export const fetchAllCards = async () => {
@@ -44,12 +46,7 @@ export const fetchCreateCard = async (name: string, description: string, image: 
 };
 
 // edit card
-export const fetchEditCard = async (
-  cardID: number,
-  name: string,
-  description: string,
-  image: string
-) => {
+export const fetchEditCard = async (cardID: number, name: string, description: string, image: string) => {
   const res = await fetch(`${APIURL}/cards/edit/${cardID}`, {
     method: 'PATCH',
     headers: {
